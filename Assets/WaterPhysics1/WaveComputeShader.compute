@@ -1,0 +1,22 @@
+#pragma kernel CSMain
+
+// Parameters for wave simulation
+float waveSpeed = 1.0f;
+float waveHeight = 1.0f;
+float waveLength = 10.0f;
+float time;
+
+[numthreads(8, 8, 1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+    // Example wave calculation
+    float x = id.x;
+    float z = id.y;
+    float k = 2 * 3.14159 / waveLength;
+    float c = sqrt(9.81 / k);
+    float phase = k * (cos(1.0 * x) + sin(1.0 * z)) - c * time * waveSpeed;
+    float wave = waveHeight * sin(phase);
+    
+    // Store the result in a buffer or texture
+    // Output to a buffer or texture
+}

@@ -1,0 +1,98 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d0e08c78d062f443844ba88369c86ec, type: 3}
+  m_Name: CubeClouds
+  m_EditorClassIdentifier: 
+  cloudiness: 1
+  dynamicCloudiness: 1
+  cloudinessMin: -1
+  cloudinessMax: 0
+  currentCloudiness: 0
+  inScatteringMultiplier: 100
+  inScatteringStrength: 1
+  stepCount: 128
+  coarseSteps: 128
+  detailSteps: 112
+  maximumEmptyDetailSteps: 5
+  mipmapStages: {x: 12500, y: 25000}
+  blueNoise: 1
+  depthOptions: 1
+  useReprojection: 1
+  resolutionOptions: 0
+  useTemporalDenoising: 1
+  cloudAlbedoColor: {r: 1, g: 1, b: 1, a: 1}
+  sunColor: {r: 1, g: 1, b: 1, a: 1}
+  ambientExposure: 3
+  cheapAmbientLighting: 1
+  HGEccentricityForward: 0.8
+  HGEccentricityBackward: -0.5
+  HGStrength: 1
+  celestialBodySelection: 0
+  planetRadius: 6378
+  cloudLayerHeight: 500
+  cloudLayerThickness: 2000
+  cloudFadeDistance: 40000
+  visibility: 30000
+  overrideAtmosphericVisibility: 0
+  renderInSceneView: 1
+  temporalDenoisingFactor: 0
+  subpixelJitterEnabled: 1
+  castShadowsEnabled: 1
+  shadowStepCount: 8
+  screenShadows: 1
+  shadowStrength: 1
+  shadowResolution: 256
+  shadowDistance: 10000
+  extinctionCoefficient: 100
+  maxLightingDistance: 2000
+  shadingStrengthFalloff: 0
+  multipleScatteringAmpGain: 0.1
+  multipleScatteringDensityGain: 0.05
+  multipleScatteringOctaves: 3
+  overrideDistantCoverage: 0
+  distantCoverageDepth: 20000
+  distantCoverageAmount: 0.544
+  heightDensityInfluence: 0.92
+  cloudinessDensityInfluence: 0
+  weathermapType: 0
+  weathermapTexture: {fileID: 0}
+  weathermapGain: 0.5
+  weathermapLacunarity: 2
+  weathermapOctaves: 3
+  weathermapVelocity: {x: 0, y: 0}
+  weathermapScale: 3
+  baseTextureID: 3
+  baseTextureQuality: 2
+  baseTexture: {fileID: 11700000, guid: a94e323da6fa17b438a63735d087be03, type: 2}
+  baseTextureScale: {x: 0.14, y: 0.14, z: 0.14}
+  baseTextureTimescale: {x: 0, y: 0, z: 0}
+  detail1TextureID: 2
+  detail1TextureQuality: 0
+  detail1Texture: {fileID: 11700000, guid: 671600490c45f6749bc0a26256f75608, type: 2}
+  detail1TextureInfluence: 1
+  detail1TextureScale: {x: 0.1, y: 0.1, z: 0.1}
+  detail1TextureTimescale: {x: 0, y: 0, z: 0}
+  curlTexture: {fileID: 2800000, guid: 3ad2d7c7d756ac34c8587a90a123ceb9, type: 3}
+  curlTextureInfluence: 1
+  curlTextureScale: 2
+  curlTextureTimescale: 0
+  highAltExtinctionCoefficient: 1
+  highAltCloudiness: 0.35
+  highAltTex1: {fileID: 2800000, guid: 5523415a55da14d4f8906fe5c1ef62a4, type: 3}
+  highAltScale1: {x: 1, y: 1}
+  highAltTimescale1: {x: 0, y: 0}
+  highAltTex2: {fileID: 2800000, guid: 5523415a55da14d4f8906fe5c1ef62a4, type: 3}
+  highAltScale2: {x: 5, y: 5}
+  highAltTimescale2: {x: 0, y: 0}
+  highAltTex3: {fileID: 2800000, guid: 5523415a55da14d4f8906fe5c1ef62a4, type: 3}
+  highAltScale3: {x: 5, y: 5}
+  highAltTimescale3: {x: 0, y: 0}

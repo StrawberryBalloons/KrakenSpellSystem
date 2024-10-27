@@ -1,0 +1,36 @@
+#pragma kernel CSMain
+
+struct WaveParams
+{
+    float amplitude;
+    float wavelength;
+    float speed;
+    float2 direction;
+};
+
+cbuffer WaveData
+{
+    WaveParams waveParameters[3];
+    float time;
+}
+
+RWStructuredBuffer<float3> vertices;
+
+[numthreads(8, 8, 1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+    float x = vertices[id.x].x;
+    float z = vertices[id.x].z;
+    float y = 0;
+
+    for (int i = 0; i < 3; i++)
+    {
+        float k = 2.0 * 3.14159265359 / waveParameters[i].wavelength;
+        float c = sqrt(9.81 / k);
+        float2 waveDirection = waveParameters[i].direction;
+        float phase = k * (waveDirection.x * x + waveDirection.y * z) - c * time * waveParameters[i].speed;
+        y += waveParameters[i].amplitude * sin(phase);
+    }
+
+    vertices[id.x].y = y;
+}
