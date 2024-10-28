@@ -123,7 +123,11 @@ public class PlayerStats : MonoBehaviour
     public void TakeDamage(float damage)
     {
         Debug.Log("You took damage: " + damage);
-        currentStats[(int)StatType.Health] -= damage;
+        Debug.Log("Damage Reduced by: " + currentStats[(int)StatType.Armour]);
+
+        float effectiveDamage = Mathf.Max(0, damage - currentStats[(int)StatType.Armour]);
+        currentStats[(int)StatType.Health] = Mathf.Clamp(currentStats[(int)StatType.Health] - effectiveDamage, 0, modifiedStats[(int)StatType.Health]);
+
         Debug.Log("New Health: " + currentStats[(int)StatType.Health]);
     }
 
