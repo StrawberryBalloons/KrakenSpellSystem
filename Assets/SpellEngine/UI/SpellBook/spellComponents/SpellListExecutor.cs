@@ -9,14 +9,16 @@ public class SpellListExecutor : MonoBehaviour
     public GameObject caster; // The game object casting the spells
     public List<GameObject> inputs = new List<GameObject>(); // Input GameObjects for the spell
     private Queue<SpellNode> queue; // Queue for breadth-first traversal
-    public float CastDelay = 1.0f; // Default delay between each spell cast in seconds
+    public float castStepDelay = 1.0f; // Default delay between each spell cast in seconds
+    public float spellDuration = 30f; // Default delay between each spell cast in seconds
 
     private bool isWaiting = false;
     private bool doPreviousNodeInputs = true;
 
     void Awake()
     {
-        Destroy(gameObject, 30f);
+        Debug.Log("SpellDuration: " + spellDuration);
+        Destroy(gameObject, spellDuration);
     }
     void FixedUpdate()
     {
@@ -34,6 +36,9 @@ public class SpellListExecutor : MonoBehaviour
             Debug.LogError("Caster is not assigned.");
             return;
         }
+
+
+        //IF CASTER HAS MANA || IF USE HEALTHFORMANA IS TRUE ELSE DON'T EXECUTE SPELL LIST
 
         // Deep copy the spell list to ensure no changes to the original++
         SpellListManager copiedHead = spellListManager.DeepCopy();
@@ -115,6 +120,8 @@ public class SpellListExecutor : MonoBehaviour
                 outputs = spellExe.Cast(caster, currentInputs, currentNode.parameters);
             }
 
+            ManaCostHandler(caster, spellExe.ReturnManaCost());
+
 
             // // Execute the spell associated with the current node
             // outputs.AddRange(spellExe.Cast(caster, currentInputs, currentNode.parameters));
@@ -147,7 +154,7 @@ public class SpellListExecutor : MonoBehaviour
             }
             else
             {
-                yield return new WaitForSeconds(CastDelay);
+                yield return new WaitForSeconds(castStepDelay);
             }
         }
     }
@@ -195,4 +202,27 @@ public class SpellListExecutor : MonoBehaviour
             yield return new WaitUntil(() => waitableSpell.IsTriggered);
         }
     }
+
+    void ManaCostHandler(GameObject caster, float ManaCost)
+    {
+        if (caster.layer == LayerMask.NameToLayer("Player"))
+        {
+            // Caster is on the Player layer
+            Debug.Log("Caster is on the Player layer.");
+            caster.GetComponent<PlayerStats>().UseMana(ManaCost);
+            // Perform player-specific actions here
+        }
+        else if (caster.layer == LayerMask.NameToLayer("Rune"))
+        {
+            // Caster is on the Rune layer
+            Debug.Log("Caster is on the Rune layer.");
+            // Perform rune-specific actions here
+        }
+        else
+        {
+            // Caster is on another layer
+            Debug.Log("Caster is on an unhandled layer.");
+        }
+    }
+
 }

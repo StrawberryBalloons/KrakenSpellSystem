@@ -3641,9 +3641,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a27984bb768e2e33aaae218a8b7a9efa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  affectedObjects: []
   duration: 5
   layerToAdd: 0
+  affectedObjects: []
 --- !u!114 &6350603517955401420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24934,6 +24934,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2141714ec4c7b660398af21d2c9cd780, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ManaCost: 10
   affectedObjects: []
 --- !u!114 &8885315859114427070
 MonoBehaviour:
@@ -25330,9 +25331,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c675f99d67648d855a46d4894ac06402, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  affectedObjects: []
   duration: 5
   layerToIgnore: 0
+  affectedObjects: []
 --- !u!114 &3334041814049359107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40279,8 +40280,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allSpellLists: []
+  COOLDOWN_DURATION: 1
   spellListExecutorPrefab: {fileID: 5706126562134478971, guid: 2e1d60d2d3526353f8e61bbc93a4548c,
     type: 3}
+  hud: {fileID: 105324585426613177}
 --- !u!114 &5896213726937566969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47637,6 +47640,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   affectedObjects: []
+  objectsToUnparent: []
 --- !u!114 &5256332549926557142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54861,6 +54865,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 5285324929225403984, guid: ec28aee77543e144f9fa626e5bac5b5b,
     type: 3}
+  explosionStrength: 1
   affectedObjects: []
 --- !u!114 &6900314755464261383
 MonoBehaviour:

@@ -140,6 +140,38 @@ public class PlayerStats : MonoBehaviour
     {
         currentStats[(int)StatType.Stamina] -= staminaUsed;
     }
+
+    public float GetCurrentStat(StatType statType)
+    {
+        switch (statType)
+        {
+            case StatType.Health:
+                return currentStats[0];
+            case StatType.HealthRegen:
+                return currentStats[1];
+            case StatType.Mana:
+                return currentStats[2];
+            case StatType.ManaRegen:
+                return currentStats[3];
+            case StatType.Stamina:
+                return currentStats[4];
+            case StatType.StaminaRegen:
+                return currentStats[5];
+            case StatType.Armour:
+                return currentStats[6];
+            case StatType.CastDelay:
+                return currentStats[7];
+            case StatType.CastStepDelay:
+                return currentStats[8];
+            case StatType.SpellDuration:
+                return currentStats[9];
+            default:
+                Debug.LogError("Invalid StatType");
+                return 0f; // or another default value
+        }
+    }
+
+
     /*
 
         public void ReduceMana(float amount)

@@ -5,11 +5,13 @@ using UnityEngine;
 public class SpellListHolder : MonoBehaviour
 {
     public List<SpellListManager> allSpellLists = new List<SpellListManager>();
-    public const float COOLDOWN_DURATION = 1f;
+    public float COOLDOWN_DURATION = 1f;
     private bool isCooldownActive = false;
 
     public GameObject spellListExecutorPrefab;  // Prefab for the SpellListExecutor
     private GameObject caster;
+    private PlayerStats casterStats;
+    public GameObject hud;
 
     void Awake()
     {
@@ -18,11 +20,14 @@ public class SpellListHolder : MonoBehaviour
         {
             Debug.LogError("SpellListExecutor prefab is not assigned.");
         }
+
+        casterStats = caster.GetComponent<PlayerStats>();
     }
 
     void Update()
     {
-        if (!isCooldownActive)
+        //added a check for the HUD so that spells can't be cast when it's not active
+        if (!isCooldownActive && hud.active)
         {
             // Variable to track if any spell has been triggered
             bool spellTriggered = false;
@@ -38,6 +43,7 @@ public class SpellListHolder : MonoBehaviour
 
                     // Set flag to true since a spell has been triggered
                     spellTriggered = true;
+                    COOLDOWN_DURATION = casterStats.GetCurrentStat(PlayerStats.StatType.CastDelay);
                 }
             }
 
@@ -70,6 +76,9 @@ public class SpellListHolder : MonoBehaviour
             // Instantiate a new SpellListExecutor from the prefab
             GameObject spellExecutorInstance = Instantiate(spellListExecutorPrefab, transform.position, transform.rotation);
             SpellListExecutor spellListExecutor = spellExecutorInstance.GetComponent<SpellListExecutor>();
+
+            spellListExecutor.castStepDelay = casterStats.GetCurrentStat(PlayerStats.StatType.CastStepDelay);
+            spellListExecutor.spellDuration = casterStats.GetCurrentStat(PlayerStats.StatType.SpellDuration);
 
             if (spellListExecutor != null)
             {
