@@ -84,4 +84,8 @@ public class CollisionCounter : MonoBehaviour, ICast, IWaitableSpell, CollisionR
     {
         return affectedObjects;
     }
+    public float ReturnManaCost()
+    {
+        return collisionCountThreshold * 10 + 10;
+    }
 }

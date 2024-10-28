@@ -55,4 +55,8 @@ public class PullTowardsCaster : MonoBehaviour, ICast
     {
         return affectedObjects;
     }
+    public float ReturnManaCost()
+    {
+        return (maxDistance * pullForce) + 10;
+    }
 }

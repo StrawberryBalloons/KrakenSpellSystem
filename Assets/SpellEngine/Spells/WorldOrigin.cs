@@ -19,4 +19,8 @@ public class WorldOrigin : MonoBehaviour, ICast
     {
         return affectedObjects;
     }
+    public float ReturnManaCost()
+    {
+        return (affectedObjects.Count * 10) + 10;
+    }
 }

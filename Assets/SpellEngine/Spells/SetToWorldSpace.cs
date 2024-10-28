@@ -1,12 +1,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SetToWorldSpace : MonoBehaviour, ICast
+public class SetToWorldSpace : MonoBehaviour, ICast // to undo SetToLocalSpace
 {
-    // Implementation of the Cast method from the ICast interface
+    public float ManaCost = 10;
     public List<GameObject> affectedObjects;
+
     public List<GameObject> Cast(GameObject caster, List<GameObject> inputs, List<object> parameters)
     {
+        if (inputs == null || inputs.Count == 0)
+        {
+            return null;
+        }
+
+        affectedObjects = new List<GameObject>();
+
         foreach (var item in inputs)
         {
             if (item != null)
@@ -15,20 +23,27 @@ public class SetToWorldSpace : MonoBehaviour, ICast
                 Vector3 worldPosition = item.transform.position;
                 Quaternion worldRotation = item.transform.rotation;
 
-                // Set the item's parent to null to make it a root object in the scene
+                // Unparent the item to make it a root object in the scene
                 item.transform.SetParent(null);
 
-                // Restore the world position and rotation -- not sure if needed
-                // item.transform.position = worldPosition;
-                // item.transform.rotation = worldRotation;
+                // Restore the world position and rotation
+                item.transform.position = worldPosition;
+                item.transform.rotation = worldRotation;
+
+                affectedObjects.Add(item);
             }
         }
-        affectedObjects = inputs;
 
-        return inputs;
+        return affectedObjects;
     }
+
     public List<GameObject> ReturnAffectedObjects()
     {
         return affectedObjects;
     }
+    public float ReturnManaCost()
+    {
+        return 10 * affectedObjects.Count;
+    }
+
 }

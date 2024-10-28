@@ -54,4 +54,8 @@ public class PushAwayFromCaster : MonoBehaviour, ICast
     {
         return affectedObjects;
     }
+    public float ReturnManaCost()
+    {
+        return (maxDistance * pushForce) + 10;
+    }
 }

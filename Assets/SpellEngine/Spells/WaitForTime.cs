@@ -45,5 +45,9 @@ public class WaitForTime : MonoBehaviour, ICast, IWaitableSpell
     {
         return affectedObjects;
     }
+    public float ReturnManaCost()
+    {
+        return (10 * waitDuration) + 10;
+    }
 
 }

@@ -62,4 +62,8 @@ public class ConjureLight : MonoBehaviour, ICast
     {
         return affectedObjects;
     }
+    public float ReturnManaCost()
+    {
+        return 10 * lightStrength;
+    }
 }

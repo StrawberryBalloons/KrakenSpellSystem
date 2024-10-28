@@ -31,4 +31,8 @@ public class RemoveFromList : MonoBehaviour, ICast
     {
         return affectedObjects;
     }
+    public float ReturnManaCost()
+    {
+        return 10;
+    }
 }

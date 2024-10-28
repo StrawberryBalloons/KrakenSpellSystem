@@ -41,4 +41,8 @@ public class RotateItems : MonoBehaviour, ICast
     {
         return affectedObjects;
     }
+    public float ReturnManaCost()
+    {
+        return 50;
+    }
 }

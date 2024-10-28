@@ -52,4 +52,8 @@ public class Ignite : MonoBehaviour, ICast
     {
         return affectedObjects;
     }
+    public float ReturnManaCost()
+    {
+        return 150;
+    }
 }

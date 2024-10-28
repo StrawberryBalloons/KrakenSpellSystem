@@ -30,4 +30,8 @@ public class Arcane : MonoBehaviour, ICast
     {
         return affectedObjects;
     }
+    public float ReturnManaCost()
+    {
+        return 150;
+    }
 }

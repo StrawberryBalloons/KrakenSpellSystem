@@ -49,4 +49,8 @@ public class CreatePointAtLocation : MonoBehaviour, ICast
     {
         return affectedObjects;
     }
+    public float ReturnManaCost()
+    {
+        return (Vector3.Distance(pointLocation, Vector3.zero) * 10) + 10;
+    }
 }

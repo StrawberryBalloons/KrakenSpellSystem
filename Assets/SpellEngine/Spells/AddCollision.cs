@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AddCollision : MonoBehaviour, ICast
+public class AddCollision : MonoBehaviour, ICast //to be removed
 {
+
     public float duration = 5f;   // Duration to add collision
     public int layerToAdd;        // Layer to add collision with
     public List<GameObject> affectedObjects;
@@ -53,5 +54,10 @@ public class AddCollision : MonoBehaviour, ICast
     public List<GameObject> ReturnAffectedObjects()
     {
         return affectedObjects;
+    }
+
+    public float ReturnManaCost()
+    {
+        return 100f;
     }
 }

@@ -29,4 +29,8 @@ public class ConjureShield : MonoBehaviour, ICast
     {
         return affectedObjects;
     }
+    public float ReturnManaCost()
+    {
+        return 100;
+    }
 }

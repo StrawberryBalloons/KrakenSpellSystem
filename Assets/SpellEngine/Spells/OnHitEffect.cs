@@ -63,4 +63,8 @@ public class OnHitEffect : MonoBehaviour, ICast, IWaitableSpell, CollisionReturn
     {
         return affectedObjects;
     }
+    public float ReturnManaCost()
+    {
+        return (collisionCountThreshold * 10) + 10;
+    }
 }

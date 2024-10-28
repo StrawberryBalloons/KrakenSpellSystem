@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class AdjustGravity : MonoBehaviour, ICast
 {
+
     public Vector3 gravityDirection = Vector3.down; // Default gravity direction
     public List<GameObject> affectedObjects;
 
@@ -61,5 +62,10 @@ public class AdjustGravity : MonoBehaviour, ICast
     public List<GameObject> ReturnAffectedObjects()
     {
         return affectedObjects;
+    }
+
+    public float ReturnManaCost()
+    {
+        return (Vector3.Distance(gravityDirection, Vector3.zero) * 10) + 10;
     }
 }

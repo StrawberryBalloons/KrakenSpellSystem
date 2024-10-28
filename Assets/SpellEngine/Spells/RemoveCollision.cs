@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RemoveCollision : MonoBehaviour, ICast
+public class RemoveCollision : MonoBehaviour, ICast //to be removed
 {
     public float duration = 5f;   // Duration to remove collision
     public int layerToIgnore;     // Layer to ignore collision with
@@ -53,5 +53,9 @@ public class RemoveCollision : MonoBehaviour, ICast
     public List<GameObject> ReturnAffectedObjects()
     {
         return affectedObjects;
+    }
+    public float ReturnManaCost()
+    {
+        return 100;
     }
 }

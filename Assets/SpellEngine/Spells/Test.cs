@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Test : MonoBehaviour, ICast
+public class Test : MonoBehaviour, ICast //to be removed
 {
     public GameObject fireballPrefab; // Reference to the prefab for the fireball
     public float speed;
@@ -26,5 +26,9 @@ public class Test : MonoBehaviour, ICast
     public List<GameObject> ReturnAffectedObjects()
     {
         return affectedObjects;
+    }
+    public float ReturnManaCost()
+    {
+        return 10;
     }
 }

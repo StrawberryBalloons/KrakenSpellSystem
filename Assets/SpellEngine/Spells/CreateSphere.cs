@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CreateSphere : MonoBehaviour, ICast
+public class CreateSphere : MonoBehaviour, ICast //to be removed
 {
     public GameObject spherePrefab; // Reference to the prefab for the fireball
     public List<GameObject> affectedObjects;
@@ -29,5 +29,9 @@ public class CreateSphere : MonoBehaviour, ICast
     public List<GameObject> ReturnAffectedObjects()
     {
         return affectedObjects;
+    }
+    public float ReturnManaCost()
+    {
+        return 100;
     }
 }

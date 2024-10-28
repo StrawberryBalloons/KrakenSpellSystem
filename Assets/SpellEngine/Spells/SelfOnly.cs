@@ -21,4 +21,8 @@ public class SelfOnly : MonoBehaviour, ICast
     {
         return affectedObjects;
     }
+    public float ReturnManaCost()
+    {
+        return 1;
+    }
 }

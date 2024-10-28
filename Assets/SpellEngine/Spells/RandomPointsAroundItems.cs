@@ -56,4 +56,8 @@ public class RandomPointsAroundItems : MonoBehaviour, ICast
     {
         return affectedObjects;
     }
+    public float ReturnManaCost()
+    {
+        return (maxDistanceFromItem * numberOfPointsPerItem) + 100;
+    }
 }

@@ -19,4 +19,8 @@ public class EndSpell : MonoBehaviour, ICast
     {
         return affectedObjects; // If you need to track objects, you could add them here
     }
+    public float ReturnManaCost()
+    {
+        return 0;
+    }
 }

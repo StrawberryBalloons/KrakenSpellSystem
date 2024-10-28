@@ -96,5 +96,8 @@ public class Tether : MonoBehaviour, ICast
         Destroy(joint);
         Debug.Log("Spring Joint removed after " + delay + " seconds.");
     }
-
+    public float ReturnManaCost()
+    {
+        return 100;
+    }
 }

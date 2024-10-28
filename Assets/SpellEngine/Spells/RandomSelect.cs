@@ -30,4 +30,8 @@ public class RandomSelect : MonoBehaviour, ICast
     {
         return affectedObjects;
     }
+    public float ReturnManaCost()
+    {
+        return 10;
+    }
 }

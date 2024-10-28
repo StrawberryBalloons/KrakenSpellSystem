@@ -80,4 +80,8 @@ public class RepeatUntil : MonoBehaviour, ICast, IParams
     {
         return affectedObjects;
     }
+    public float ReturnManaCost()
+    {
+        return (triggerCounter * 10) + 10;
+    }
 }

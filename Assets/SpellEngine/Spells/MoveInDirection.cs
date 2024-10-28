@@ -45,4 +45,8 @@ public class MoveInDirection : MonoBehaviour, ICast
     {
         return affectedObjects;
     }
+    public float ReturnManaCost()
+    {
+        return (Vector3.Distance(orientationDirection, Vector3.zero) * 10) + 10;
+    }
 }

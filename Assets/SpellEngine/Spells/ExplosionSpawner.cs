@@ -5,6 +5,7 @@ using UnityEngine;
 public class ExplosionSpawner : MonoBehaviour, ICast
 {
     public GameObject explosionPrefab; // The explosion VFX prefab
+    public float explosionStrength = 1f;
 
     public List<GameObject> affectedObjects;
 
@@ -26,5 +27,9 @@ public class ExplosionSpawner : MonoBehaviour, ICast
     private void SpawnExplosion(Vector3 position)
     {
         Instantiate(explosionPrefab, position, Quaternion.identity);
+    }
+    public float ReturnManaCost()
+    {
+        return explosionStrength * 10;
     }
 }

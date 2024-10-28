@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RaycastForward : MonoBehaviour, ICast
+public class RaycastForward : MonoBehaviour, ICast //to be removed
 {
 
     [SerializeField] public float raycastDistance = 10f; // Distance of the raycast
@@ -78,5 +78,9 @@ public class RaycastForward : MonoBehaviour, ICast
     public List<GameObject> ReturnAffectedObjects()
     {
         return affectedObjects;
+    }
+    public float ReturnManaCost()
+    {
+        return 100;
     }
 }
