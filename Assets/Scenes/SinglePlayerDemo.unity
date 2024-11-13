@@ -11670,9 +11670,10 @@ GameObject:
   m_Component:
   - component: {fileID: 9123706779625129031}
   - component: {fileID: 3385741370339365867}
+  - component: {fileID: 9123706779625129032}
   - component: {fileID: 1637307617848152835}
   m_Layer: 0
-  m_Name: RockSwamp01_LOD00
+  m_Name: InteractableRock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20658,6 +20659,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9123706779625129032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3842658294863934651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 127298a4ee511e643825508a8bd845c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 4
 --- !u!1 &9138034986129074787
 GameObject:
   m_ObjectHideFlags: 0

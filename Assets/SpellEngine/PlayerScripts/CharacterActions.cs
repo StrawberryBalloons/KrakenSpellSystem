@@ -52,6 +52,13 @@ public class CharacterActions : MonoBehaviour
     private float grabCooldown = 0.5f;
     private bool canGrab = true;
 
+    //INTERACT
+    public float reachDistance = 10f;
+    public bool screenClick = false;
+    public KeyCode interactKey = KeyCode.Mouse1;
+    public Interactable focus;
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -71,6 +78,11 @@ public class CharacterActions : MonoBehaviour
         CheckForIdle();
     }
 
+    void Update()
+    {
+        Interact();
+    }
+
     void LateUpdate()
     {
         if (!Cursor.visible)
@@ -84,6 +96,60 @@ public class CharacterActions : MonoBehaviour
                 RotateAround();
             }
         }
+    }
+
+    void Interact()
+    {
+        if (Input.GetKeyDown(interactKey))
+        {
+            RemoveFocus();
+            Ray ray;
+
+            // Determine the origin of the ray based on screenClick
+            if (screenClick)
+            {
+                // Raycast from the camera at the screen center
+                ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+            }
+            else
+            {
+                // Raycast from the transform's position
+                ray = new Ray(transform.position, transform.forward);
+            }
+
+            // Perform the raycast and store the result
+            if (Physics.Raycast(ray, out RaycastHit hitInfo, reachDistance))
+            {
+                Debug.Log("Hit: " + hitInfo.collider.name);
+                Interactable interactable = hitInfo.collider.GetComponent<Interactable>();
+                // Perform actions on hit (e.g., interact with the object)
+                if (interactable != null)
+                {
+                    SetFocus(interactable);
+                }
+            }
+        }
+    }
+    void SetFocus(Interactable newFocus)
+    {
+        if (newFocus != focus)
+        {
+            if (focus != null)
+            {
+                focus.OnDefocused();
+            }
+            focus = newFocus;
+        }
+        newFocus.OnFocused(transform);
+    }
+
+    void RemoveFocus()
+    {
+        if (focus != null)
+        {
+            focus.OnDefocused();
+        }
+        focus = null;
     }
 
     public void SetCameraSpeed(float camRotSpe)
