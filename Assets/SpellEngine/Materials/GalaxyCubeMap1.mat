@@ -15,7 +15,7 @@ Material:
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 2
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -26,6 +26,10 @@ Material:
     m_TexEnvs:
     - _GalaxyCubeMap:
         m_Texture: {fileID: 8900000, guid: 2eb264ba723995eefa9176680e258f2d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _StarCubeMap:
@@ -48,13 +52,14 @@ Material:
     m_Floats:
     - _FresnelNoise: 0.2
     - _FresnelPower: 2
+    - _FresnelYN: 0
     - _NoisePower: 2
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _FresnelColour: {r: 0.6320754, g: 0.48423648, b: 0.09242612, a: 0}
-    - _GalaxyColour: {r: 0, g: 0.6086731, b: 1, a: 0}
-    - _StarColour: {r: 1, g: 0.2119225, b: 0, a: 0}
+    - _FresnelColour: {r: 0.12738378, g: 0.6313726, b: 0.094117634, a: 0}
+    - _GalaxyColour: {r: 1, g: 1, b: 1, a: 0}
+    - _StarColour: {r: 1, g: 0.80399513, b: 0, a: 0}
     - _StarOffset: {r: 0.5, g: 1.48, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &81963378107239526
