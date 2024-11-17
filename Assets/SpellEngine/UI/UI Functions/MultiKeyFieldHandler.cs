@@ -6,6 +6,7 @@ public class MultiKeyFieldHandler : MonoBehaviour
 {
     public CharacterActions characterActions;
     public UIController uIController;
+    public InventoryUI inventoryUI;
     public List<TMP_InputField> keyFields; // List of key fields
     private bool inputSelected = false;
     private bool waitingForKey = false;
@@ -74,6 +75,10 @@ public class MultiKeyFieldHandler : MonoBehaviour
         else if (selectedField.name == "Camera")
         {
             characterActions.cameraKey = keyPressed;
+        }
+        else if (selectedField.name == "Inventory")
+        {
+            inventoryUI.interactKey = keyPressed;
         }
         // Add more conditions as needed for other fields
     }

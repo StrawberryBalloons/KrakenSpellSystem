@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; // Required when Using UI elements.
+using UnityEngine.EventSystems;
 using Unity.Netcode;
 
 public class CharacterActions : MonoBehaviour
@@ -114,7 +115,7 @@ public class CharacterActions : MonoBehaviour
             else
             {
                 // Raycast from the transform's position
-                ray = new Ray(transform.position, transform.forward);
+                ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
             }
 
             // Perform the raycast and store the result
@@ -122,6 +123,7 @@ public class CharacterActions : MonoBehaviour
             {
                 Debug.Log("Hit: " + hitInfo.collider.name);
                 Interactable interactable = hitInfo.collider.GetComponent<Interactable>();
+
                 // Perform actions on hit (e.g., interact with the object)
                 if (interactable != null)
                 {

@@ -27,7 +27,7 @@ public class SpellListHolder : MonoBehaviour
     void Update()
     {
         //added a check for the HUD so that spells can't be cast when it's not active
-        if (!isCooldownActive && hud.active)
+        if (!isCooldownActive && !Cursor.visible)
         {
             // Variable to track if any spell has been triggered
             bool spellTriggered = false;

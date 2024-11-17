@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: TestItem
   m_EditorClassIdentifier: 
   name: Helm of Debug
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 1c310b5759a5fe6d2927edbd81a9042c, type: 3}
   isDefault: 0
