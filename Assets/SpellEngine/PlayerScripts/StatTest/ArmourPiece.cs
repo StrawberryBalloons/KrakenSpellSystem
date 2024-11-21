@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ArmourPiece : MonoBehaviour
 {
-    public enum ArmourType
+    public enum EquipmentType
     {
         Helm,
         Chest,
@@ -15,7 +15,7 @@ public class ArmourPiece : MonoBehaviour
         Amulet,
         Ring
     }
-    // Define the Rarity enum
+
     public enum Rarity
     {
         Common,
@@ -40,26 +40,7 @@ public class ArmourPiece : MonoBehaviour
         }
     }
 
-    [Serializable]
-    public struct ArmourPieceData
-    {
-        public string name;
-        public string description;
-        public Rarity rarity;
-        public ArmourType armourType;
-        public List<ArmourStat> armourStats;
-
-        public ArmourPieceData(string name, string description, Rarity rarity, ArmourType type)
-        {
-            this.name = name;
-            this.description = description;
-            this.rarity = rarity;
-            this.armourType = type;
-            this.armourStats = new List<ArmourStat>();
-        }
-    }
-
-    public List<ArmourPieceData> armourPieces = new List<ArmourPieceData>();
+    public List<EquipmentPiece> equipment = new List<EquipmentPiece>();
 
     private void Awake()
     {
@@ -68,17 +49,18 @@ public class ArmourPiece : MonoBehaviour
 
     private void InitializeDefaultArmourStatsList()
     {
-        foreach (ArmourType type in Enum.GetValues(typeof(ArmourType)))
+        foreach (EquipmentType type in Enum.GetValues(typeof(EquipmentType)))
         {
-            ArmourPieceData pieceData = new ArmourPieceData("Dragon Scale " + type, "An armor made from the scales of a dragon.", Rarity.Legendary, type);
+            EquipmentPiece pieceData = new EquipmentPiece("Dragon Scale " + type, "An armor made from the scales of a dragon.", Rarity.Legendary, type);
 
             // Initialize armourStats with default values
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < Enum.GetValues(typeof(PlayerStats.StatType)).Length; i++)
             {
                 pieceData.armourStats.Add(new ArmourStat((PlayerStats.StatType)i, 1f));
             }
 
-            armourPieces.Add(pieceData);
+
+            equipment.Add(pieceData);
         }
     }
 }

@@ -40,10 +40,62 @@ public class PlayerStats : MonoBehaviour
     [SerializeField]
     public List<float> currentStats = new List<float>();
 
+    public Equipment[] currentEquipment;
+    public Inventory inventory;
+    public delegate void OnEquipmentChanged(OnEquipmentChanged newItem, Equipment oldItem);
+    public OnEquipmentChanged onEquipmentChanged;
+
     private void Start()
     {
         InitializeStats();
         StartCoroutine(RegenerationRoutine());
+        int numSlots = Enum.GetValues(typeof(ArmourPiece.EquipmentType)).Length;
+        currentEquipment = new Equipment[numSlots];
+        inventory = GetComponent<Inventory>();
+    }
+
+    public void Equip(Equipment newItem)
+    {
+        int slotIndex = (int)newItem.equipmentInfo.equipmentType;
+
+        Equipment oldItem = null;
+
+        if (currentEquipment[slotIndex] != null)
+        {
+            oldItem = currentEquipment[slotIndex];
+            inventory.Add(oldItem);
+        }
+
+        if (onEquipmentChanged != null)
+        {
+            onEquipmentChanged.Invoke(newItem, oldItem);
+        }
+
+        currentEquipment[slotIndex] = newItem;
+    }
+
+    public void UnEquip(int slotIndex)
+    {
+        if (currentEquipment[slotIndex] != null)
+        {
+            Equipment oldItem = currentEquipment[slotIndex];
+            inventory.Add(oldItem);
+
+            currentEquipment[slotIndex] = null;
+
+            if (onEquipmentChanged != null)
+            {
+                onEquipmentChanged.Invoke(null, oldItem);
+            }
+        }
+    }
+
+    public void UnequipAll()
+    {
+        for (int i = 0; i < currentEquipment.Length; i++)
+        {
+            UnEquip(i);
+        }
     }
     void OnCollisionEnter(Collision collision)
     {
@@ -72,8 +124,9 @@ public class PlayerStats : MonoBehaviour
         modifiedStats.Clear();
         modifiedStats.AddRange(baseStats);
 
+        // EQUIPMENT
         // Add values from all armour pieces
-        foreach (var statsList in armourPiece.armourPieces)
+        foreach (var statsList in armourPiece.equipment)
         {
             foreach (var armourStat in statsList.armourStats)
             {
@@ -82,6 +135,7 @@ public class PlayerStats : MonoBehaviour
             }
         }
 
+        // TITLES
         // Multiply by values from first title list
         var firstTitleList = title.TitleStatsLists[0];
         for (int i = 0; i < modifiedStats.Count; i++)

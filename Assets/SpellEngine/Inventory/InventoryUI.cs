@@ -24,11 +24,11 @@ public class InventoryUI : MonoBehaviour
             inventoryUI.SetActive(!inventoryUI.activeSelf);
             if (inventoryUI.activeSelf)
             {
-                Cursor.visible = true;
+                RevealCursor();
             }
             else
             {
-                Cursor.visible = false;
+                HideCursor();
             }
         }
     }
@@ -47,5 +47,16 @@ public class InventoryUI : MonoBehaviour
                 slots[i].ClearSlot();
             }
         }
+    }
+
+    void HideCursor()
+    {
+        Cursor.lockState = CursorLockMode.Locked; // Lock the cursor to the game window
+        Cursor.visible = false; // Hide the cursor
+    }
+    void RevealCursor()
+    {
+        Cursor.lockState = CursorLockMode.None; // Release the cursor from the game window
+        Cursor.visible = true; // Show the cursor
     }
 }

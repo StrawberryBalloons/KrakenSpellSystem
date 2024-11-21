@@ -38,6 +38,7 @@ public class Inventory : MonoBehaviour
                 onItemChangedCallback.Invoke();
             }
         }
+        item.itemOwner = transform;
         return true;
     }
 
@@ -49,6 +50,7 @@ public class Inventory : MonoBehaviour
         {
             onItemChangedCallback.Invoke();
         }
+        item.itemOwner = null;
     }
 
 

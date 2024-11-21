@@ -18,7 +18,7 @@ public class DisplayArmour : MonoBehaviour
     {
         for (int i = 0; i < armourTexts.Count; i++)
         {
-            armourTexts[i].text = armour.armourPieces[i].name;
+            armourTexts[i].text = armour.equipment[i].name;
         }
     }
 }
