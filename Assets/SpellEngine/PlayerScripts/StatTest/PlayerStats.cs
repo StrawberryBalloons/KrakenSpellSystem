@@ -42,7 +42,7 @@ public class PlayerStats : MonoBehaviour
 
     public Equipment[] currentEquipment;
     public Inventory inventory;
-    public delegate void OnEquipmentChanged(OnEquipmentChanged newItem, Equipment oldItem);
+    public delegate void OnEquipmentChanged(Equipment newItem, Equipment oldItem);
     public OnEquipmentChanged onEquipmentChanged;
 
     private void Start()
