@@ -42,3 +42,4 @@ MonoBehaviour:
       value: 0
     - type: 9
       value: 0
+  mesh: {fileID: 3722382718090811511, guid: 9257398ed8b770feba20447ea142a7ea, type: 3}

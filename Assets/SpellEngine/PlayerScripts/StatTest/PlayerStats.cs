@@ -41,17 +41,21 @@ public class PlayerStats : MonoBehaviour
     public List<float> currentStats = new List<float>();
 
     public Equipment[] currentEquipment;
-    public Inventory inventory;
+    public SkinnedMeshRenderer targetMesh;
+    SkinnedMeshRenderer[] currentMeshes;
+    Inventory inventory;
     public delegate void OnEquipmentChanged(Equipment newItem, Equipment oldItem);
     public OnEquipmentChanged onEquipmentChanged;
 
     private void Start()
     {
-        InitializeStats();
+        InitializeStats(); //will need to be replaced when gear saving is done
         StartCoroutine(RegenerationRoutine());
+
         int numSlots = Enum.GetValues(typeof(ArmourPiece.EquipmentType)).Length;
         currentEquipment = new Equipment[numSlots];
         inventory = GetComponent<Inventory>();
+        currentMeshes = new SkinnedMeshRenderer[numSlots];
     }
 
     public void Equip(Equipment newItem)
@@ -72,12 +76,23 @@ public class PlayerStats : MonoBehaviour
         }
 
         currentEquipment[slotIndex] = newItem;
+
+        SkinnedMeshRenderer newMesh = Instantiate<SkinnedMeshRenderer>(newItem.mesh);
+        newMesh.transform.parent = targetMesh.transform;
+
+        newMesh.bones = targetMesh.bones;
+        newMesh.rootBone = targetMesh.rootBone;
+        currentMeshes[slotIndex] = newMesh;
     }
 
     public void UnEquip(int slotIndex)
     {
         if (currentEquipment[slotIndex] != null)
         {
+            if (currentMeshes[slotIndex] != null)
+            {
+                Destroy(currentMeshes[slotIndex].gameObject);
+            }
             Equipment oldItem = currentEquipment[slotIndex];
             inventory.Add(oldItem);
 

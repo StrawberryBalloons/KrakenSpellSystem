@@ -6,6 +6,7 @@ using UnityEngine;
 public class Equipment : Item
 {
     public EquipmentPiece equipmentInfo;
+    public SkinnedMeshRenderer mesh;
     PlayerStats player = null;
 
     public override void Use()
