@@ -75,6 +75,8 @@ public class PlayerStats : MonoBehaviour
             onEquipmentChanged.Invoke(newItem, oldItem);
         }
 
+
+
         currentEquipment[slotIndex] = newItem;
 
         SkinnedMeshRenderer newMesh = Instantiate<SkinnedMeshRenderer>(newItem.mesh);
@@ -83,6 +85,10 @@ public class PlayerStats : MonoBehaviour
         newMesh.bones = targetMesh.bones;
         newMesh.rootBone = targetMesh.rootBone;
         currentMeshes[slotIndex] = newMesh;
+
+
+        Debug.Log("currentEquipment: " + currentEquipment[slotIndex]);
+        InitializeStats(); //will need to be replaced when gear saving is done
     }
 
     public void UnEquip(int slotIndex)
@@ -102,7 +108,10 @@ public class PlayerStats : MonoBehaviour
             {
                 onEquipmentChanged.Invoke(null, oldItem);
             }
+            InitializeStats(); //will need to be replaced when gear saving is done
         }
+
+
     }
 
     public void UnequipAll()
@@ -141,12 +150,15 @@ public class PlayerStats : MonoBehaviour
 
         // EQUIPMENT
         // Add values from all armour pieces
-        foreach (var statsList in armourPiece.equipment)
+        foreach (var item in currentEquipment)
         {
-            foreach (var armourStat in statsList.armourStats)
+            Debug.Log("Currrent Equipment: " + item);
+            if (item != null)
             {
-                int index = (int)armourStat.type;
-                modifiedStats[index] += armourStat.value;
+                for (int i = 0; i < Enum.GetValues(typeof(StatType)).Length; i++)
+                {
+                    modifiedStats[i] += item.equipmentInfo.armourStats[i].value;
+                }
             }
         }
 

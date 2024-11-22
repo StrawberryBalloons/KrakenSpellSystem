@@ -23,23 +23,23 @@ MonoBehaviour:
     equipmentType: 0
     armourStats:
     - type: 0
-      value: 0
+      value: 100
     - type: 1
-      value: 0
+      value: 10
     - type: 2
-      value: 0
+      value: 100
     - type: 3
-      value: 0
+      value: 10
     - type: 4
-      value: 0
+      value: 100
     - type: 5
-      value: 0
+      value: 10
     - type: 6
-      value: 0
+      value: 20
     - type: 7
       value: 0
     - type: 8
       value: 0
     - type: 9
-      value: 0
+      value: 5
   mesh: {fileID: 3722382718090811511, guid: 9257398ed8b770feba20447ea142a7ea, type: 3}
