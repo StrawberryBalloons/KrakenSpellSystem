@@ -12,13 +12,11 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public GameObject spellNodeSlotPrefab; // Reference to the SpellNodeSlot prefab
     public GameObject parameterPrefab; // UI element prefab that stores pre-configured parameters
 
-    [SerializeField]
     private RectTransform panelRectTransform;
     private Vector2 initialPanelPosition;
     private Canvas canvas;
     private CanvasGroup canvasGroup;
     private GridLayoutGroup gridLayoutGroup;
-    [HideInInspector] public Transform parentAfterDrag;
 
     private Transform originalParent;
     private int originalSiblingIndex;

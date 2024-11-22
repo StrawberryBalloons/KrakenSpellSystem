@@ -1,11 +1,16 @@
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.EventSystems;
+using System.Collections.Generic;
 public class InventorySlot : MonoBehaviour
 {
-    Item item;
+    public Item item;
     public Button remove;
     public Image icon;
+    private RectTransform slotRectTransform;
+    private Vector2 offset;
+    [HideInInspector]
+    public Transform parentAfterDrag;
 
     public void AddItem(Item newItem)
     {
@@ -36,4 +41,5 @@ public class InventorySlot : MonoBehaviour
             item.Use();
         }
     }
+
 }

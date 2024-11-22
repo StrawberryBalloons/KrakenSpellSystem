@@ -41,6 +41,7 @@ public class PlayerStats : MonoBehaviour
     public List<float> currentStats = new List<float>();
 
     public Equipment[] currentEquipment;
+    Title title = null;
     public SkinnedMeshRenderer targetMesh;
     SkinnedMeshRenderer[] currentMeshes;
     Inventory inventory;
@@ -49,13 +50,15 @@ public class PlayerStats : MonoBehaviour
 
     private void Start()
     {
-        InitializeStats(); //will need to be replaced when gear saving is done
-        StartCoroutine(RegenerationRoutine());
-
+        title = GetComponent<Title>();
+        title.LoadTitlesFromFolder("Assets/Resources/Titles/");
         int numSlots = Enum.GetValues(typeof(ArmourPiece.EquipmentType)).Length;
         currentEquipment = new Equipment[numSlots];
         inventory = GetComponent<Inventory>();
         currentMeshes = new SkinnedMeshRenderer[numSlots];
+
+        InitializeStats(); //will need to be replaced when gear saving is done
+        StartCoroutine(RegenerationRoutine());
     }
 
     public void Equip(Equipment newItem)
@@ -136,9 +139,8 @@ public class PlayerStats : MonoBehaviour
     private void InitializeStats()
     {
         ArmourPiece armourPiece = GetComponent<ArmourPiece>();
-        Title title = GetComponent<Title>();
 
-        if (armourPiece == null || title == null || title.TitleStatsLists.Count == 0)
+        if (armourPiece == null || title == null || title.titleStatsLists.Count == 0)
         {
             Debug.LogError("ArmourPiece or Title component not found, or Title's TitleStatsLists is empty.");
             return;
@@ -152,7 +154,7 @@ public class PlayerStats : MonoBehaviour
         // Add values from all armour pieces
         foreach (var item in currentEquipment)
         {
-            Debug.Log("Currrent Equipment: " + item);
+            // Debug.Log("Currrent Equipment: " + item);
             if (item != null)
             {
                 for (int i = 0; i < Enum.GetValues(typeof(StatType)).Length; i++)
@@ -164,7 +166,7 @@ public class PlayerStats : MonoBehaviour
 
         // TITLES
         // Multiply by values from first title list
-        var firstTitleList = title.TitleStatsLists[0];
+        var firstTitleList = title.titleStatsLists[0];
         for (int i = 0; i < modifiedStats.Count; i++)
         {
             modifiedStats[i] *= firstTitleList.titleStats[i].value;
@@ -203,8 +205,7 @@ public class PlayerStats : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        Debug.Log("You took damage: " + damage);
-        Debug.Log("Damage Reduced by: " + currentStats[(int)StatType.Armour]);
+        Debug.Log("You took damage: " + damage + " - " + currentStats[(int)StatType.Armour] + " = " + Mathf.Max(0, damage - currentStats[(int)StatType.Armour]));
 
         float effectiveDamage = Mathf.Max(0, damage - currentStats[(int)StatType.Armour]);
         currentStats[(int)StatType.Health] = Mathf.Clamp(currentStats[(int)StatType.Health] - effectiveDamage, 0, modifiedStats[(int)StatType.Health]);

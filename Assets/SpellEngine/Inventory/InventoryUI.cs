@@ -1,10 +1,13 @@
 using UnityEngine;
+using System.Linq;
+
 
 public class InventoryUI : MonoBehaviour
 {
     Inventory inventory;
     public GameObject inventoryUI;
     public Transform itemsParent;
+    public Transform toolParent;
 
     public KeyCode interactKey = KeyCode.I;
     InventorySlot[] slots;
@@ -13,7 +16,10 @@ public class InventoryUI : MonoBehaviour
     {
         inventory = Inventory.instance;
         inventory.onItemChangedCallback += UpdateUI;
-        slots = itemsParent.GetComponentsInChildren<InventorySlot>();
+        // Get components from both parents and combine them into a single array
+        slots = itemsParent.GetComponentsInChildren<InventorySlot>()
+            .Concat(toolParent.GetComponentsInChildren<InventorySlot>())
+            .ToArray();
     }
 
     // Update is called once per frame
