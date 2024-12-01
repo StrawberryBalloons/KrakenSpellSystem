@@ -73,21 +73,13 @@ public class CharacterActions : MonoBehaviour
         CheckGrounded(); // Check if the player is grounded using raycast
         if (!Cursor.visible)
         {
+            if (Input.GetKeyDown(jumpKey) && isGrounded)
+            {
+                Jump();
+            }
             HandleInput();
             Move();
-        }
-        CheckForIdle();
-    }
 
-    void Update()
-    {
-        Interact();
-    }
-
-    void LateUpdate()
-    {
-        if (!Cursor.visible)
-        {
             if (camIndex == 0)
             {
                 Rotate();
@@ -96,7 +88,13 @@ public class CharacterActions : MonoBehaviour
             {
                 RotateAround();
             }
+
         }
+    }
+
+    void Update()
+    {
+        Interact();
     }
 
     void Interact()
@@ -119,7 +117,7 @@ public class CharacterActions : MonoBehaviour
             }
 
             // Perform the raycast and store the result
-            if (Physics.Raycast(ray, out RaycastHit hitInfo, reachDistance))
+            if (Physics.Raycast(ray, out RaycastHit hitInfo, reachDistance, ~playerLayer))
             {
                 Debug.Log("Hit: " + hitInfo.collider.name);
                 Interactable interactable = hitInfo.collider.GetComponent<Interactable>();
@@ -162,29 +160,32 @@ public class CharacterActions : MonoBehaviour
 
 
 
-    void HandleInput()
+    bool HandleInput()
     {
-        HandleMovementInput();
+        bool actionFlag = false;
 
-        if (Input.GetKeyDown(jumpKey) && isGrounded)
-        {
-            Jump();
-        }
+
 
         if (Input.GetKeyDown(hangKey) && !isGrounded)
         {
             TryHangOnWall();
+            actionFlag = true;
         }
 
         if (canGrab && Input.GetKeyDown(ledgeGrabKey))
         {
             TryGrabLedge();
+            actionFlag = true;
         }
 
         if (Input.GetKeyDown(cameraKey))
         {
             SwitchPerspective();
+            actionFlag = true;
         }
+
+        HandleMovementInput();
+        return actionFlag;
     }
 
     void SwitchPerspective()
@@ -383,24 +384,19 @@ public class CharacterActions : MonoBehaviour
     {
         RaycastHit hit;
         // // Cast a ray downward from the center of the player's collider
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, out hit, 1.2f, ~playerLayer);
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, out hit, 1.3f, ~playerLayer);
 
     }
 
     void CheckForIdle()
     {
-        // Check for no input
-        if (Mathf.Approximately(Input.GetAxis("Horizontal"), 0f) && Mathf.Approximately(Input.GetAxis("Vertical"), 0f))
-        {
-            // Check for low horizontal velocity
-            Vector3 horizontalVelocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
-            Vector3 verticalVelocity = new Vector3(0, rb.velocity.y, 0);
+        // Check for low horizontal velocity
+        Vector3 horizontalVelocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+        Vector3 verticalVelocity = new Vector3(0, rb.velocity.y, 0);
 
-            if (horizontalVelocity.magnitude < 1f && (verticalVelocity.magnitude == 0))
-            {
-                // Stop the player by setting the velocity to zero
-                rb.velocity = Vector3.zero;
-            }
+        if (horizontalVelocity.magnitude < 1f && (verticalVelocity.magnitude == 0))
+        {
+            // Stop the player by setting the velocity to zero
         }
     }
 }

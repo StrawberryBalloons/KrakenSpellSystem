@@ -65,20 +65,12 @@ public class PlayerStats : MonoBehaviour
     {
         int slotIndex = (int)newItem.equipmentInfo.equipmentType;
 
-        Equipment oldItem = null;
-
-        if (currentEquipment[slotIndex] != null)
-        {
-            oldItem = currentEquipment[slotIndex];
-            inventory.Add(oldItem);
-        }
+        Equipment oldItem = UnEquip(slotIndex);
 
         if (onEquipmentChanged != null)
         {
             onEquipmentChanged.Invoke(newItem, oldItem);
         }
-
-
 
         currentEquipment[slotIndex] = newItem;
 
@@ -94,7 +86,7 @@ public class PlayerStats : MonoBehaviour
         InitializeStats(); //will need to be replaced when gear saving is done
     }
 
-    public void UnEquip(int slotIndex)
+    public Equipment UnEquip(int slotIndex)
     {
         if (currentEquipment[slotIndex] != null)
         {
@@ -112,8 +104,9 @@ public class PlayerStats : MonoBehaviour
                 onEquipmentChanged.Invoke(null, oldItem);
             }
             InitializeStats(); //will need to be replaced when gear saving is done
+            return oldItem;
         }
-
+        return null;
 
     }
 

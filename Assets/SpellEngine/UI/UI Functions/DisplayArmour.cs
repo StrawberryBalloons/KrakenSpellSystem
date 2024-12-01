@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class DisplayArmour : MonoBehaviour
 {
-    public ArmourPiece armour;
+    public PlayerStats player;
 
     public List<TextMeshProUGUI> armourTexts;
 
@@ -18,7 +18,14 @@ public class DisplayArmour : MonoBehaviour
     {
         for (int i = 0; i < armourTexts.Count; i++)
         {
-            armourTexts[i].text = armour.equipment[i].name;
+            if (player.currentEquipment[i] != null)
+            {
+                armourTexts[i].text = player.currentEquipment[i].name;
+            }
+            else
+            {
+                armourTexts[i].text = "";
+            }
         }
     }
 }
