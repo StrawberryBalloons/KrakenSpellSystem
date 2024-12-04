@@ -70,7 +70,7 @@ public class DraggableInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHan
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        slotRectTransform.anchoredPosition = initialPanelPosition;
+        slotRectTransform.anchoredPosition = Vector3.zero;
 
         // Return the item to its original parent and sibling index
         transform.SetParent(originalParent);
@@ -88,11 +88,14 @@ public class DraggableInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHan
             Debug.Log($"Dropped on inventory slot: {hoveredSlot.name}");
             hoveredSlot.AddItem(invenSlot.item);
             invenSlot.ClearSlot();
+            // Inventory.instance.Remove(item);
             // Add your logic here for handling dropping on a slot
         }
         else
         {
             Debug.Log("Not dropped on any inventory slot.");
+
+            slotRectTransform.anchoredPosition = Vector3.zero;
         }
         image.raycastTarget = true;
     }

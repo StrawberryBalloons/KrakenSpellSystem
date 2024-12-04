@@ -5,6 +5,8 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     public static Inventory instance;
+    public Transform rightHand;
+    public Transform leftHand;
 
     public List<Item> items = new List<Item>();
 

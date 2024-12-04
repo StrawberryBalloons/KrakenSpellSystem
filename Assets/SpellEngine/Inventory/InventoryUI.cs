@@ -113,10 +113,27 @@ public class InventoryUI : MonoBehaviour
 
     void UpdateCurrentSlot()
     {
+        // Sheathe the weapon if the current slot item is a weapon
+        if (currentSlot.item is Weapons currentWeapon)
+        {
+            Debug.Log("The item in the current slot is a weapon. Running Sheathe().");
+            currentWeapon.Sheathe();
+        }
+
+        // Update the current slot
         currentSlot = toolParent.GetChild(currentSlotIndex).GetComponent<InventorySlot>();
         Debug.Log($"Current slot updated to: {currentSlot.name}");
+
+        // Wield the weapon if the new current slot item is a weapon
+        if (currentSlot.item is Weapons newWeapon)
+        {
+            Debug.Log("The item in the current slot is a weapon. Running Wield().");
+            newWeapon.Wield();
+        }
+
         activateSlot();
     }
+
 
 
     void UpdateUI()
@@ -124,13 +141,10 @@ public class InventoryUI : MonoBehaviour
         Debug.Log("UPDATING UI");
         for (int i = 0; i < slots.Length; i++)
         {
+            slots[i].ClearSlot();
             if (i < inventory.items.Count)
             {
                 slots[i].AddItem(inventory.items[i]);
-            }
-            else
-            {
-                slots[i].ClearSlot();
             }
         }
     }

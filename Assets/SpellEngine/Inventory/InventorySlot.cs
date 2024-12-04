@@ -23,10 +23,12 @@ public class InventorySlot : MonoBehaviour
 
     public void ClearSlot()
     {
+
         item = null;
         icon.sprite = null;
         icon.enabled = false;
         remove.interactable = false;
+        icon.GetComponent<RectTransform>().anchoredPosition = Vector3.zero;
     }
 
     public void OnRemoveButton()
