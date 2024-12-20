@@ -27,12 +27,18 @@ public class FullBodyIK : MonoBehaviour
     {
         if (!animator) return;
 
+        // Helper method to override only the Y-axis
+        Vector3 OverrideYPosition(Vector3 original, Vector3 target)
+        {
+            return new Vector3(original.x, target.y, original.z);
+        }
+
         // Left Hand IK
         if (leftHandTarget)
         {
             animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, leftHandWeight);
             animator.SetIKRotationWeight(AvatarIKGoal.LeftHand, leftHandWeight);
-            animator.SetIKPosition(AvatarIKGoal.LeftHand, leftHandTarget.position);
+            animator.SetIKPosition(AvatarIKGoal.LeftHand, OverrideYPosition(animator.GetIKPosition(AvatarIKGoal.LeftHand), leftHandTarget.position));
             animator.SetIKRotation(AvatarIKGoal.LeftHand, leftHandTarget.rotation);
         }
         else
@@ -46,7 +52,7 @@ public class FullBodyIK : MonoBehaviour
         {
             animator.SetIKPositionWeight(AvatarIKGoal.RightHand, rightHandWeight);
             animator.SetIKRotationWeight(AvatarIKGoal.RightHand, rightHandWeight);
-            animator.SetIKPosition(AvatarIKGoal.RightHand, rightHandTarget.position);
+            animator.SetIKPosition(AvatarIKGoal.RightHand, OverrideYPosition(animator.GetIKPosition(AvatarIKGoal.RightHand), rightHandTarget.position));
             animator.SetIKRotation(AvatarIKGoal.RightHand, rightHandTarget.rotation);
         }
         else
@@ -60,7 +66,7 @@ public class FullBodyIK : MonoBehaviour
         {
             animator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, leftFootWeight);
             animator.SetIKRotationWeight(AvatarIKGoal.LeftFoot, leftFootRotationWeight);
-            animator.SetIKPosition(AvatarIKGoal.LeftFoot, leftFootTarget.position);
+            animator.SetIKPosition(AvatarIKGoal.LeftFoot, OverrideYPosition(animator.GetIKPosition(AvatarIKGoal.LeftFoot), leftFootTarget.position));
             animator.SetIKRotation(AvatarIKGoal.LeftFoot, leftFootTarget.rotation);
         }
         else
@@ -74,7 +80,7 @@ public class FullBodyIK : MonoBehaviour
         {
             animator.SetIKPositionWeight(AvatarIKGoal.RightFoot, rightFootWeight);
             animator.SetIKRotationWeight(AvatarIKGoal.RightFoot, rightFootRotationWeight);
-            animator.SetIKPosition(AvatarIKGoal.RightFoot, rightFootTarget.position);
+            animator.SetIKPosition(AvatarIKGoal.RightFoot, OverrideYPosition(animator.GetIKPosition(AvatarIKGoal.RightFoot), rightFootTarget.position));
             animator.SetIKRotation(AvatarIKGoal.RightFoot, rightFootTarget.rotation);
         }
         else
