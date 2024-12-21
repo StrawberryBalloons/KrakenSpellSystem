@@ -119,7 +119,7 @@ public abstract class EnvironmentInteractionState : BaseState<EnvironmentInterac
 
         Vector3 rayDirection = Context.CurrentShoulderTransform.position - Context.ClosestPointOnColliderFromShoulder;
         Vector3 normalizedRayDirection = rayDirection.normalized;
-        float offsetDistance = 0.5f;
+        float offsetDistance = 0.05f;
         Vector3 offset = normalizedRayDirection * offsetDistance;
 
         Vector3 offsetPosition = Context.ClosestPointOnColliderFromShoulder + offset;

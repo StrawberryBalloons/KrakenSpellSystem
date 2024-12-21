@@ -30,6 +30,7 @@ public class RiseState : EnvironmentInteractionState
     public override void UpdateState()
     {
         CalculateExpectedHandRotation();
+        Context.CurrentIkTargetTransform.position = Context.ClosestPointOnColliderFromShoulder;
 
         Context.InteractionPointYOffset = Mathf.Lerp(Context.InteractionPointYOffset, Context.ClosestPointOnColliderFromShoulder.y, _elapsedTime / _lerpDuration);
 
@@ -39,12 +40,30 @@ public class RiseState : EnvironmentInteractionState
 
         Context.CurrentIkTargetTransform.rotation = Quaternion.RotateTowards(Context.CurrentIkTargetTransform.rotation, _expectedRotation, _rotationSpeed * Time.deltaTime);
 
-        Context.CurrentIkTargetTransform.position = Context.ClosestPointOnColliderFromShoulder;
 
 
         _elapsedTime += Time.deltaTime;
     }
+    public void AddCube(Vector3 position, string name)
+    {
+        // Create a new cube at the given position
+        GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
 
+        // Set the cube's position to the specified position
+        cube.transform.position = position;
+
+        // Set the cube's scale to 0.1 in all axes
+        cube.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+
+        // Set the cube's name
+        cube.name = name;
+        // Disable the collider to make the cube non-collidable
+        Collider collider = cube.GetComponent<Collider>();
+        if (collider != null)
+        {
+            collider.enabled = false;
+        }
+    }
     private void CalculateExpectedHandRotation() //may need to replace the vector3.up with gameobject.transform.up
     {
         Vector3 startPos = Context.CurrentShoulderTransform.position;
