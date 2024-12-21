@@ -57,6 +57,7 @@ public class CharacterActions : MonoBehaviour
     public bool screenClick = false;
     public KeyCode interactKey = KeyCode.Mouse1;
     public Interactable focus;
+    public Transform lookingAt;
 
     void Start()
     {
@@ -108,11 +109,12 @@ public class CharacterActions : MonoBehaviour
             RemoveFocus();
             Ray ray = screenClick
                 ? Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0))
-                : new Ray(playerCameraCentre.transform.position, playerCameraCentre.transform.forward);
+                : new Ray(playerCameraCentre.transform.position, cameras[camIndex].transform.forward);
 
             if (Physics.Raycast(ray, out RaycastHit hitInfo, reachDistance, ~playerLayer))
             {
                 Debug.Log("Hit: " + hitInfo.collider.name);
+                lookingAt = hitInfo.transform;
                 Interactable interactable = hitInfo.collider.GetComponent<Interactable>();
                 if (interactable != null)
                 {

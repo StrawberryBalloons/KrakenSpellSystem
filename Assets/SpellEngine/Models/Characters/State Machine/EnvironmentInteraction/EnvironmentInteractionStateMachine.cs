@@ -61,6 +61,13 @@ public class EnvironmentInteractionStateMachine : StateManager<EnvironmentIntera
         boxCollider.isTrigger = true;
 
         _context.ColliderCenterY = _rootCollider.center.y;
+
+        // Set the BoxCollider to the Player layer
+        int layer = LayerMask.NameToLayer("UI");
+        if (layer != -1) // Ensure the layer exists
+        {
+            gameObject.layer = layer;
+        }
     }
 
 }

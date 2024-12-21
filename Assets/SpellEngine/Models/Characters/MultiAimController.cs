@@ -3,81 +3,38 @@ using UnityEngine.Animations.Rigging;
 
 public class MultiAimController : MonoBehaviour
 {
-    public MultiAimConstraint multiAimConstraint; // Reference to the MultiAimConstraint component
-    public GameObject player;
-    public Transform[] newSourceObjects; // Array of transforms to assign as source objects
-    public GameObject defaultView;
+    public CharacterActions characterActions; // Reference to the CharacterActions script
+    public Transform defaultView; // The GameObject's default view (Transform)
+    public Vector3 defaultLocalPosition; // Default local position for the view
+    public float distanceBreak = 10f; // The maximum allowed distance before resetting
 
-    private Transform currentFocus;
-
-    void Start()
+    private void FixedUpdate()
     {
-        // Initialize the focus at the start
-        currentFocus = player.GetComponent<CharacterActions>().focus.transform;
-
-        // Ensure we have a reference to the MultiAimConstraint
-        if (multiAimConstraint == null)
+        // Ensure CharacterActions is assigned
+        if (characterActions == null)
         {
-            Debug.LogError("MultiAimConstraint reference is missing!");
+            Debug.LogWarning("CharacterActions reference is missing.");
+            return;
         }
-    }
 
-    void FixedUpdate()
-    {
-        // Check if the focus has changed
-        Transform newFocus;
-        if (player.GetComponent<CharacterActions>().focus.transform == null)
+        // Check if lookingAt has a valid transform
+        if (characterActions.lookingAt != null)
         {
-            newFocus = defaultView.transform;
+            // Set defaultView to the position of the lookingAt transform
+            defaultView.position = characterActions.lookingAt.position;
+
+            // Check the distance between the player and the defaultView
+            float distance = Vector3.Distance(transform.position, defaultView.position);
+
+            if (distance > distanceBreak)
+            {
+                // Reset defaultView to its local position
+                defaultView.localPosition = defaultLocalPosition;
+            }
         }
         else
         {
-            newFocus = player.GetComponent<CharacterActions>().focus.transform;
-        }
-
-        if (newFocus != currentFocus)
-        {
-            currentFocus = newFocus; // Update the current focus
-
-            // Ensure we have a reference to the MultiAimConstraint
-            if (multiAimConstraint != null)
-            {
-                // Get the current data from the MultiAimConstraint
-                MultiAimConstraintData data = multiAimConstraint.data;
-
-                // Ensure the newSourceObjects array has enough space for the new source
-                var sourceObjectsList = new System.Collections.Generic.List<Transform>(newSourceObjects);
-
-                // Add the new transform (player's updated focus) to the list
-                sourceObjectsList.Add(currentFocus);
-
-                // Convert the list back to an array
-                newSourceObjects = sourceObjectsList.ToArray();
-
-                // Create a new WeightedTransformArray and manually populate it
-                WeightedTransformArray weightedArray = new WeightedTransformArray(newSourceObjects.Length);
-
-                // Populate the WeightedTransformArray
-                for (int i = 0; i < newSourceObjects.Length; i++)
-                {
-                    var weightedTransform = weightedArray[i]; // Access the element
-
-                    weightedTransform.transform = newSourceObjects[i];
-                    weightedTransform.weight = 1f; // Set the weight (you can modify this as needed)
-
-                    weightedArray[i] = weightedTransform; // Reassign the modified element
-                }
-
-                // Assign the updated array to the data
-                data.sourceObjects = weightedArray;
-
-                // Apply the updated data back to the MultiAimConstraint
-                multiAimConstraint.data = data;
-            }
-            else
-            {
-                Debug.LogError("MultiAimConstraint reference is missing!");
-            }
+            Debug.Log("CharacterActions.lookingAt is null.");
         }
     }
 }

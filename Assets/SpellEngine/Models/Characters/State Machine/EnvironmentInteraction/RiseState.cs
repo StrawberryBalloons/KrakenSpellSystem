@@ -24,13 +24,13 @@ public class RiseState : EnvironmentInteractionState
     public override void EnterState()
     {
         Debug.Log("Entering RISE State");
+        _touchTimeThreshold = Random.Range(1f, 10f);
         _elapsedTime = 0f;
     }
     public override void ExitState() { }
     public override void UpdateState()
     {
         CalculateExpectedHandRotation();
-        Context.CurrentIkTargetTransform.position = Context.ClosestPointOnColliderFromShoulder;
 
         Context.InteractionPointYOffset = Mathf.Lerp(Context.InteractionPointYOffset, Context.ClosestPointOnColliderFromShoulder.y, _elapsedTime / _lerpDuration);
 
