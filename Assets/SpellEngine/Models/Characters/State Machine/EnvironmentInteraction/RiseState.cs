@@ -23,7 +23,7 @@ public class RiseState : EnvironmentInteractionState
 
     public override void EnterState()
     {
-        Debug.Log("Entering RISE State");
+        // Debug.Log("Entering RISE State");
         _touchTimeThreshold = Random.Range(1f, 10f);
         _elapsedTime = 0f;
     }

@@ -20,7 +20,7 @@ public class ApproachState : EnvironmentInteractionState
 
     public override void EnterState()
     {
-        Debug.Log("Entering APPROACH State");
+        // Debug.Log("Entering APPROACH State");
         _elapsedTime = 0f;
     }
     public override void ExitState() { }

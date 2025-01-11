@@ -14,7 +14,7 @@ public class SearchState : EnvironmentInteractionState
 
     public override void EnterState()
     {
-        Debug.Log("Entering SEARCH State");
+        // Debug.Log("Entering SEARCH State");
     }
     public override void ExitState() { }
     public override void UpdateState() { }

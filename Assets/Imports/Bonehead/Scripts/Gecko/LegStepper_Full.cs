@@ -65,6 +65,8 @@ public class LegStepper_Full : MonoBehaviour
         }
     }
 
+
+
     // Find a grounded point using home position and overshoot fraction
     // Returns true if a point was found
     bool GetGroundedEndPosition(out Vector3 position, out Vector3 normal)
@@ -93,6 +95,8 @@ public class LegStepper_Full : MonoBehaviour
         position = Vector3.zero;
         normal = Vector3.zero;
         return false;
+
+
     }
 
     IEnumerator MoveToPointCoroutine(Vector3 endPoint, Quaternion endRot, float moveTime)
@@ -158,6 +162,6 @@ public class LegStepper_Full : MonoBehaviour
 
         Gizmos.DrawWireSphere(transform.position, 0.25f);
         Gizmos.DrawLine(transform.position, homeTransform.position);
-        Gizmos.DrawWireCube(homeTransform.position, Vector3.one * 0.1f);
+        // Gizmos.DrawWireCube(homeTransform.position, Vector3.one * 0.1f);
     }
 }

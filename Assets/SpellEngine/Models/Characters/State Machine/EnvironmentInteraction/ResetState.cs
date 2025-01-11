@@ -17,7 +17,7 @@ public class ResetState : EnvironmentInteractionState
 
     public override void EnterState()
     {
-        Debug.Log("Entering RESET State");
+        // Debug.Log("Entering RESET State");
         Context.ClosestPointOnColliderFromShoulder = Vector3.positiveInfinity;
         Context.CurrentIntersectingCollider = null;
         _elapsedTime = 0f;

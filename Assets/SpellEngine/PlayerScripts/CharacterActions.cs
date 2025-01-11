@@ -37,7 +37,7 @@ public class CharacterActions : MonoBehaviour
     // JUMP
     public KeyCode jumpKey = KeyCode.Space;
     public float jumpForce = 7.0f;
-    private bool isGrounded;
+    private bool isGrounded = true;
 
     // // HANG
     // public KeyCode hangKey = KeyCode.H;
@@ -58,6 +58,11 @@ public class CharacterActions : MonoBehaviour
     public KeyCode interactKey = KeyCode.Mouse1;
     public Interactable focus;
     public Transform lookingAt;
+
+    public bool ReturnIsGrounded()
+    {
+        return isGrounded;
+    }
 
     void Start()
     {
