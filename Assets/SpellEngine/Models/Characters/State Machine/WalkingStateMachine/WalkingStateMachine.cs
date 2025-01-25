@@ -9,6 +9,7 @@ public class WalkingStateMachine : StateManager<WalkingStateMachine.EWalkingStat
     {
         Moving,
         Falling,
+        Animated,
     }
 
     [SerializeField] CharacterActions characterActions;
@@ -62,6 +63,7 @@ public class WalkingStateMachine : StateManager<WalkingStateMachine.EWalkingStat
     {
         States.Add(EWalkingStateMachine.Moving, new MovingState(_context, EWalkingStateMachine.Moving));
         States.Add(EWalkingStateMachine.Falling, new FallingState(_context, EWalkingStateMachine.Falling));
+        States.Add(EWalkingStateMachine.Animated, new AnimatedState(_context, EWalkingStateMachine.Animated));
 
         CurrentState = States[EWalkingStateMachine.Moving];
     }

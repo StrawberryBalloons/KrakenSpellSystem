@@ -23,16 +23,25 @@ public class WalkingStepper : MonoBehaviour
     public bool Moving { get; private set; }
     public bool isGrounded = true;
     public Rigidbody Rb;
+    public Transform StepperParent = null;
 
     Coroutine moveCoroutine;
 
     void Awake()
     {
         // Exit hierarchy to avoid influence from root
-        transform.SetParent(null);
-
+        StepperParent = transform.parent;
+        SetParentsNull();
         // Move to a valid position right away
         TryMove();
+    }
+    public void SetParentsNull()
+    {
+        transform.SetParent(null);
+    }
+    public void ResetParents()
+    {
+        transform.SetParent(StepperParent);
     }
 
     // Move leg if move conditions are met

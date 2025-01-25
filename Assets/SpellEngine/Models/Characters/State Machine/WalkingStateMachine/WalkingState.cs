@@ -11,5 +11,4 @@ public abstract class WalkingState : BaseState<WalkingStateMachine.EWalkingState
         Context = context;
     }
 
-
 }

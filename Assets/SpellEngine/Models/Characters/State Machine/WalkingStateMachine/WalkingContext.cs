@@ -122,6 +122,8 @@ public class WalkingContext : MonoBehaviour
 
         if (StepRoutine == null)
         {
+            _leftStepper.SetParentsNull();
+            _rightStepper.SetParentsNull();
             Debug.Log("Starting leg stepping coroutine...");
             StepRoutine = StartCoroutine(LegUpdateCoroutine());
         }
@@ -137,6 +139,11 @@ public class WalkingContext : MonoBehaviour
         {
             StopCoroutine(StepRoutine);
             StepRoutine = null;
+            _leftStepper.ResetParents();
+            _leftStepper.transform.localPosition = Vector3.zero;
+
+            _rightStepper.ResetParents();
+            _rightStepper.transform.localPosition = Vector3.zero;
         }
     }
 
