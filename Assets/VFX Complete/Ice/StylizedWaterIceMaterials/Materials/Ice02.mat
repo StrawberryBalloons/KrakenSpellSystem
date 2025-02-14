@@ -24,7 +24,7 @@ Material:
   m_Shader: {fileID: -6465566751694194690, guid: 396812329559276d7892e4f5d3464375,
     type: 3}
   m_Parent: {fileID: 2100000, guid: 7d48e3fbc3023bf61a352ada376ad8d2, type: 2}
-  m_ModifiedSerializedProperties: 12
+  m_ModifiedSerializedProperties: 28
   m_ValidKeywords: []
   m_InvalidKeywords:
   - _NORMALMAP
@@ -32,8 +32,8 @@ Material:
   - _PARALLAXMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_DoubleSidedGI: 1
+  m_CustomRenderQueue: 2450
   stringTagMap: {}
   disabledShaderPasses: []
   m_LockedProperties: 
@@ -62,11 +62,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Alpha: 1
+    - _Alpha: 0.534
     - _BUILTIN_QueueControl: -1
-    - _Metallic: 0
-    - _QueueControl: 0
-    - _Smoothness: 0
+    - _Metallic: 0.11
+    - _QueueControl: 1
+    - _QueueOffset: 32
+    - _Smoothness: 0.24
     m_Colors:
     - _FresnelColour: {r: 2.6701565, g: 2.6701565, b: 2.6701565, a: 0}
     - _IceColour: {r: 0, g: 0.5764705, b: 1, a: 0}

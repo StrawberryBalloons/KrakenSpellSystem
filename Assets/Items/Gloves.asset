@@ -18,28 +18,10 @@ MonoBehaviour:
   itemOwner: {fileID: 0}
   equipmentInfo:
     name: Gloves
-    description: 
-    rarity: 0
+    description: An armor forged from the blood and bones of testers.
+    rarity: 2
     equipmentType: 2
-    armourStats:
+    equipmentStats:
     - type: 0
-      value: 100
-    - type: 1
-      value: 10
-    - type: 2
-      value: 100
-    - type: 3
-      value: 10
-    - type: 4
-      value: 100
-    - type: 5
-      value: 10
-    - type: 6
-      value: 20
-    - type: 7
-      value: 0
-    - type: 8
-      value: 0
-    - type: 9
-      value: 5
+      value: 1
   mesh: {fileID: 4447941201722110504, guid: 1cbe6c87618f0cc36850c708f857c838, type: 3}

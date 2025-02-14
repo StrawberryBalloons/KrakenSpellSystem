@@ -6,10 +6,10 @@ public class Debuff : MonoBehaviour
     [System.Serializable]
     public struct DebuffStat
     {
-        public PlayerStats.StatType type;
+        public StatType type;
         public float value;
 
-        public DebuffStat(PlayerStats.StatType type, float value)
+        public DebuffStat(StatType type, float value)
         {
             this.type = type;
             this.value = value;
@@ -31,16 +31,16 @@ public class Debuff : MonoBehaviour
     {
         List<DebuffStat> defaultList = new List<DebuffStat>
         {
-            new DebuffStat(PlayerStats.StatType.Health, -10f),
-            new DebuffStat(PlayerStats.StatType.HealthRegen, -0.5f),
-            new DebuffStat(PlayerStats.StatType.Mana, -10f),
-            new DebuffStat(PlayerStats.StatType.ManaRegen, -0.5f),
-            new DebuffStat(PlayerStats.StatType.Stamina, -10f),
-            new DebuffStat(PlayerStats.StatType.StaminaRegen, -0.5f),
-            new DebuffStat(PlayerStats.StatType.Armour, 0f),
-            new DebuffStat(PlayerStats.StatType.CastDelay, 0.2f),
-            new DebuffStat(PlayerStats.StatType.CastStepDelay, 0.2f),
-            new DebuffStat(PlayerStats.StatType.SpellDuration, -2f)
+            new DebuffStat(StatType.Health, -10f),
+            new DebuffStat(StatType.HealthRegen, -0.5f),
+            new DebuffStat(StatType.Mana, -10f),
+            new DebuffStat(StatType.ManaRegen, -0.5f),
+            new DebuffStat(StatType.Stamina, -10f),
+            new DebuffStat(StatType.StaminaRegen, -0.5f),
+            new DebuffStat(StatType.Armour, 0f),
+            new DebuffStat(StatType.CastDelay, 0.2f),
+            new DebuffStat(StatType.CastStepDelay, 0.2f),
+            new DebuffStat(StatType.SpellDuration, -2f)
         };
 
         debuffStatsLists.Add(defaultList);

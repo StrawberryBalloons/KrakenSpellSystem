@@ -14,19 +14,19 @@ public class StatBars : MonoBehaviour
         // Ensure health and healthBarImage are not null
         if (stats != null)
         {
-            float healthRatio = Mathf.Clamp01(stats.currentStats[(int)PlayerStats.StatType.Health] / stats.modifiedStats[(int)PlayerStats.StatType.Health]);
+            float healthRatio = Mathf.Clamp01(stats.currentStats[(int)StatType.Health] / stats.modifiedStats[(int)StatType.Health]);
             if (healthRatio < 1f)
             {
                 healthBarImage.fillAmount = healthRatio;
             }
 
-            float manaRatio = Mathf.Clamp01(stats.currentStats[(int)PlayerStats.StatType.Mana] / stats.modifiedStats[(int)PlayerStats.StatType.Mana]);
+            float manaRatio = Mathf.Clamp01(stats.currentStats[(int)StatType.Mana] / stats.modifiedStats[(int)StatType.Mana]);
             if (manaRatio < 1f)
             {
                 manaBarImage.fillAmount = manaRatio;
             }
 
-            float stamRatio = Mathf.Clamp01(stats.currentStats[(int)PlayerStats.StatType.Stamina] / stats.modifiedStats[(int)PlayerStats.StatType.Stamina]);
+            float stamRatio = Mathf.Clamp01(stats.currentStats[(int)StatType.Stamina] / stats.modifiedStats[(int)StatType.Stamina]);
             if (stamRatio < 1f)
             {
                 staminaBarImage.fillAmount = stamRatio;

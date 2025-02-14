@@ -6,6 +6,7 @@ using UnityEngine;
 public class Weapons : Item
 {
     public GameObject weaponPrefab;
+    public EquipmentPiece equipmentInfo;
     PlayerStats player = null;
     Inventory inven = null;
     GameObject weaponInstance = null;
@@ -70,12 +71,22 @@ public class Weapons : Item
         // Scale the weapon to 1/100th of its original size
         weaponInstance.transform.localScale = weaponPrefab.transform.localScale * 0.01f;
 
-
+        //Add the wielded values to players stats
+        foreach (var stat in equipmentInfo.equipmentStats)
+        {
+            player.ModifyStats(stat.type, stat.value);
+        }
         equipped = true;
     }
 
     public void Sheathe()
     {
+        //Remove the wielded values from player stats
+        foreach (var stat in equipmentInfo.equipmentStats)
+        {
+            player.ModifyStats(stat.type, -stat.value);
+        }
+
         //Delete weapon game object
         Destroy(weaponInstance);
         equipped = false;

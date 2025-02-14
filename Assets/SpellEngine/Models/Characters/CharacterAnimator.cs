@@ -22,9 +22,18 @@ public class CharacterAnimator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float horizontal = Input.GetAxis("Horizontal"); // Get user input (-1 to 1)
+        float vertical = Input.GetAxis("Vertical");
+
         // Debug.Log("Running velocity and magnitude: " + rb.velocity.magnitude + " " + rb.velocity);
         float speedPercent = rb.velocity.magnitude / maxAnimSpeed;
         // Debug.Log("Max Ground Speeed and current speed percent: " + ca.maxGroundedSpeed + " " + speedPercent);
+        // Debug.Log("horizontal: " + horizontal);
+        // Debug.Log("Vertical: " + vertical);
         animator.SetFloat("speedPercent", speedPercent, dampTime, Time.deltaTime);
+        animator.SetBool("grounded", ca.ReturnIsGrounded());
+        animator.SetFloat("horizontal", horizontal);
+        animator.SetFloat("vertical", vertical);
+
     }
 }

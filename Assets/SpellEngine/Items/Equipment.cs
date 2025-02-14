@@ -25,7 +25,7 @@ public class Equipment : Item
 
     void Awake()
     {
-        if (equipmentInfo.armourStats.Count < 1 || equipmentInfo.armourStats.Count == null)
+        if (equipmentInfo.equipmentStats.Count < 1 || equipmentInfo.equipmentStats.Count == null)
         {
             initDefaultArmourPiece();
             Debug.Log("ArmourPiece issue");
@@ -34,21 +34,12 @@ public class Equipment : Item
 
     void initDefaultArmourPiece()
     {
-        ArmourPiece.EquipmentType type = ArmourPiece.EquipmentType.Helm;
-        ArmourPiece.Rarity rarity = ArmourPiece.Rarity.Legendary;
-        equipmentInfo = new EquipmentPiece("Developer's " + type, "An armor forge from the blood and bones of testers.", rarity, type);
+        EquipmentType type = EquipmentType.Helm;
+        Rarity rarity = Rarity.Legendary;
+        equipmentInfo = new EquipmentPiece("Developer's " + type, "An armor forged from the blood and bones of testers.", rarity, type);
 
 
-        // Initialize armourStats with default values
-        equipmentInfo.armourStats.Add(new ArmourPiece.ArmourStat((PlayerStats.StatType.Health), 1f));
-        equipmentInfo.armourStats.Add(new ArmourPiece.ArmourStat((PlayerStats.StatType.HealthRegen), 1f));
-        equipmentInfo.armourStats.Add(new ArmourPiece.ArmourStat((PlayerStats.StatType.Mana), 1f));
-        equipmentInfo.armourStats.Add(new ArmourPiece.ArmourStat((PlayerStats.StatType.ManaRegen), 1f));
-        equipmentInfo.armourStats.Add(new ArmourPiece.ArmourStat((PlayerStats.StatType.Stamina), 1f));
-        equipmentInfo.armourStats.Add(new ArmourPiece.ArmourStat((PlayerStats.StatType.StaminaRegen), 1f));
-        equipmentInfo.armourStats.Add(new ArmourPiece.ArmourStat((PlayerStats.StatType.Armour), 1f));
-        equipmentInfo.armourStats.Add(new ArmourPiece.ArmourStat((PlayerStats.StatType.CastDelay), 1f));
-        equipmentInfo.armourStats.Add(new ArmourPiece.ArmourStat((PlayerStats.StatType.CastStepDelay), 1f));
-        equipmentInfo.armourStats.Add(new ArmourPiece.ArmourStat((PlayerStats.StatType.SpellDuration), 1f));
+        // Initialize equipmentStats with default values
+        equipmentInfo.equipmentStats.Add(new StatValue((StatType.Health), 1f));
     }
 }

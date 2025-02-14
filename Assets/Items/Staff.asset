@@ -18,4 +18,10 @@ MonoBehaviour:
   itemOwner: {fileID: 0}
   weaponPrefab: {fileID: 2900166479186462487, guid: 1f86b103fbbd2ce47ad14cd80775d8dd,
     type: 3}
+  equipmentInfo:
+    name: Staff
+    description: 
+    rarity: 0
+    equipmentType: 8
+    equipmentStats: []
   equipped: 0

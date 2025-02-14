@@ -18,28 +18,10 @@ MonoBehaviour:
   itemOwner: {fileID: 0}
   equipmentInfo:
     name: UnderRobe
-    description: For under the robes
-    rarity: 2
+    description: An armor forged from the blood and bones of testers.
+    rarity: 4
     equipmentType: 1
-    armourStats:
-    - type: 0
-      value: 100
-    - type: 1
-      value: 10
-    - type: 2
-      value: 100
-    - type: 3
-      value: 10
-    - type: 4
-      value: 100
-    - type: 5
-      value: 10
-    - type: 6
-      value: 20
-    - type: 7
-      value: 0
-    - type: 8
-      value: 0
+    equipmentStats:
     - type: 9
-      value: 5
+      value: 1
   mesh: {fileID: 5737754407308170115, guid: af5b75380c549f541b94beadfcdf0a47, type: 3}

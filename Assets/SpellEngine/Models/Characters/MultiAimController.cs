@@ -34,7 +34,7 @@ public class MultiAimController : MonoBehaviour
         }
         else
         {
-            Debug.Log("CharacterActions.lookingAt is null.");
+            // Debug.Log("CharacterActions.lookingAt is null.");
         }
     }
 }

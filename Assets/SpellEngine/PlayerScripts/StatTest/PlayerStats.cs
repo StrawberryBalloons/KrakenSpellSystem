@@ -2,25 +2,28 @@ using System;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
-
+public enum StatType
+{
+    Health,
+    HealthRegen,
+    Mana,
+    ManaRegen,
+    Stamina,
+    StaminaRegen,
+    Armour,
+    Ward,
+    CastDelay,
+    CastStepDelay,
+    SpellDuration,
+    SpellDamage,
+    MeleeDamage,
+    Speed
+}
 public class PlayerStats : MonoBehaviour
 {
-    public enum StatType
-    {
-        Health,
-        HealthRegen,
-        Mana,
-        ManaRegen,
-        Stamina,
-        StaminaRegen,
-        Armour,
-        CastDelay,
-        CastStepDelay,
-        SpellDuration
-    }
 
-    [SerializeField]
-    public List<float> baseStats = new List<float>
+
+    private List<float> statList = new List<float>
     {
         100f,   // Health
         1f,     // HealthRegen
@@ -29,10 +32,15 @@ public class PlayerStats : MonoBehaviour
         100f,   // Stamina
         1f,     // StaminaRegen
         10f,    // Armour
+        0f,     // Ward
         1f,     // CastDelay
         1f,     // CastStepDelay
-        10f     // SpellDuration
+        10f,    // SpellDuration
+        1f,     // SpellDamage
+        1f,     // MeleeDamage
+        1f      // MeleeDamage
     };
+    public List<float> baseStats = new List<float>();
 
     [SerializeField]
     public List<float> modifiedStats = new List<float>();
@@ -40,22 +48,31 @@ public class PlayerStats : MonoBehaviour
     [SerializeField]
     public List<float> currentStats = new List<float>();
 
-    public Equipment[] currentEquipment;
-    Title title = null;
     public SkinnedMeshRenderer targetMesh;
     SkinnedMeshRenderer[] currentMeshes;
-    Inventory inventory;
-    public delegate void OnEquipmentChanged(Equipment newItem, Equipment oldItem);
+    public delegate void OnEquipmentChanged(Item newItem, Item oldItem);
     public OnEquipmentChanged onEquipmentChanged;
+
+
+
+    public Equipment[] currentEquipment;
+    public Weapons[] wieldedWeapons;
+    Title title = null;
+    Inventory inventory;
+
+
+
 
     private void Start()
     {
         title = GetComponent<Title>();
         title.LoadTitlesFromFolder("Assets/Resources/Titles/");
-        int numSlots = Enum.GetValues(typeof(ArmourPiece.EquipmentType)).Length;
-        currentEquipment = new Equipment[numSlots];
+        int equipmentSlots = Enum.GetValues(typeof(EquipmentType)).Length;
+        currentEquipment = new Equipment[equipmentSlots];
+        wieldedWeapons = new Weapons[2];
         inventory = GetComponent<Inventory>();
-        currentMeshes = new SkinnedMeshRenderer[numSlots];
+        currentMeshes = new SkinnedMeshRenderer[equipmentSlots];
+        baseStats = statList;
 
         InitializeStats(); //will need to be replaced when gear saving is done
         StartCoroutine(RegenerationRoutine());
@@ -64,6 +81,7 @@ public class PlayerStats : MonoBehaviour
     public void Equip(Equipment newItem)
     {
         int slotIndex = (int)newItem.equipmentInfo.equipmentType;
+        Debug.Log("Type: " + newItem.equipmentInfo.equipmentType + " Index: " + slotIndex);
 
         Equipment oldItem = UnEquip(slotIndex);
 
@@ -123,7 +141,7 @@ public class PlayerStats : MonoBehaviour
         float collisionForce = collision.impulse.magnitude / Time.fixedDeltaTime;
 
         // Calculate the damage
-        float damage = collisionForce / 100f;
+        float damage = collisionForce / 10f;
 
         // Update the text component
         TakeDamage(damage);
@@ -131,9 +149,7 @@ public class PlayerStats : MonoBehaviour
 
     private void InitializeStats()
     {
-        ArmourPiece armourPiece = GetComponent<ArmourPiece>();
-
-        if (armourPiece == null || title == null || title.titleStatsLists.Count == 0)
+        if (title == null || title.titleStatsLists.Count == 0)
         {
             Debug.LogError("ArmourPiece or Title component not found, or Title's TitleStatsLists is empty.");
             return;
@@ -150,9 +166,25 @@ public class PlayerStats : MonoBehaviour
             // Debug.Log("Currrent Equipment: " + item);
             if (item != null)
             {
-                for (int i = 0; i < Enum.GetValues(typeof(StatType)).Length; i++)
+                // for (int i = 0; i < Enum.GetValues(typeof(StatType)).Length; i++)
+                // {
+                //     modifiedStats[i] += item.equipmentInfo.equipmentStats[i].value;
+                // }
+                foreach (var stat in item.equipmentInfo.equipmentStats)
                 {
-                    modifiedStats[i] += item.equipmentInfo.armourStats[i].value;
+                    modifiedStats[(int)stat.type] += stat.value;
+                }
+
+            }
+        }
+
+        foreach (var weapon in wieldedWeapons)
+        {
+            if (weapon != null)
+            {
+                foreach (var stat in weapon.equipmentInfo.equipmentStats)
+                {
+                    modifiedStats[(int)stat.type] += stat.value;
                 }
             }
         }
@@ -160,15 +192,21 @@ public class PlayerStats : MonoBehaviour
         // TITLES
         // Multiply by values from first title list
         var firstTitleList = title.titleStatsLists[0];
-        for (int i = 0; i < modifiedStats.Count; i++)
+        // for (int i = 0; i < modifiedStats.Count; i++)
+        // {
+        //     modifiedStats[i] *= firstTitleList.titleStats[i].value;
+        // }
+        foreach (var stat in firstTitleList.titleStats)
         {
-            modifiedStats[i] *= firstTitleList.titleStats[i].value;
+            modifiedStats[(int)stat.type] += stat.value;
         }
+
 
         // Initialize currentStats with modifiedStats values
         currentStats.Clear();
         currentStats.AddRange(modifiedStats);
     }
+
     private IEnumerator RegenerationRoutine()
     {
         while (true)
@@ -218,33 +256,24 @@ public class PlayerStats : MonoBehaviour
 
     public float GetCurrentStat(StatType statType)
     {
-        switch (statType)
+        int index = (int)statType;
+        Debug.Log(index + " " + statType);
+        Debug.Log(currentStats);
+        if (index < 0 || index > currentStats.Count) // Use .Count instead of .Length
         {
-            case StatType.Health:
-                return currentStats[0];
-            case StatType.HealthRegen:
-                return currentStats[1];
-            case StatType.Mana:
-                return currentStats[2];
-            case StatType.ManaRegen:
-                return currentStats[3];
-            case StatType.Stamina:
-                return currentStats[4];
-            case StatType.StaminaRegen:
-                return currentStats[5];
-            case StatType.Armour:
-                return currentStats[6];
-            case StatType.CastDelay:
-                return currentStats[7];
-            case StatType.CastStepDelay:
-                return currentStats[8];
-            case StatType.SpellDuration:
-                return currentStats[9];
-            default:
-                Debug.LogError("Invalid StatType");
-                return 0f; // or another default value
+            Debug.LogError($"Invalid StatType: {statType} + {index} + {currentStats.Count}");
+            return 0f; // or another default value
         }
+
+        return currentStats[index];
     }
+
+    public void ModifyStats(StatType statType, float value)
+    {
+        modifiedStats[(int)GetCurrentStat(statType)] += value;
+        currentStats[(int)GetCurrentStat(statType)] += value;
+    }
+
 
 
     /*

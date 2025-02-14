@@ -36,7 +36,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - PlayerModel
   - Player
   m_SortingLayers:
   - name: Default

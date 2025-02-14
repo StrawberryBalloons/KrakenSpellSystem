@@ -13,6 +13,14 @@ public class Ignite : MonoBehaviour, ICast
     {
         foreach (GameObject targetGameObject in inputs)
         {
+            // Check if the target's layer is Player, Environment, or Water
+            if (targetGameObject.layer == LayerMask.NameToLayer("Player") ||
+                targetGameObject.layer == LayerMask.NameToLayer("Environment") ||
+                targetGameObject.layer == LayerMask.NameToLayer("Water"))
+            {
+                continue; // Skip this target
+            }
+
             // Check if the target GameObject is an instance of the ProjectileHolder prefab
             if (targetGameObject.name.Contains("ProjectileHolder(Clone)"))
             {

@@ -7,10 +7,10 @@ public class TitleAsset : ScriptableObject
     [System.Serializable]
     public struct TitleStat
     {
-        public PlayerStats.StatType type;
+        public StatType type;
         public float value;
 
-        public TitleStat(PlayerStats.StatType type, float value)
+        public TitleStat(StatType type, float value)
         {
             this.type = type;
             this.value = value;

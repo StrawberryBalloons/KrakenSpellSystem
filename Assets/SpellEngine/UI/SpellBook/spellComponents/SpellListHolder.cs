@@ -43,7 +43,7 @@ public class SpellListHolder : MonoBehaviour
 
                     // Set flag to true since a spell has been triggered
                     spellTriggered = true;
-                    COOLDOWN_DURATION = casterStats.GetCurrentStat(PlayerStats.StatType.CastDelay);
+                    COOLDOWN_DURATION = casterStats.GetCurrentStat(StatType.CastDelay);
                 }
             }
 
@@ -77,8 +77,8 @@ public class SpellListHolder : MonoBehaviour
             GameObject spellExecutorInstance = Instantiate(spellListExecutorPrefab, transform.position, transform.rotation);
             SpellListExecutor spellListExecutor = spellExecutorInstance.GetComponent<SpellListExecutor>();
 
-            spellListExecutor.castStepDelay = casterStats.GetCurrentStat(PlayerStats.StatType.CastStepDelay);
-            spellListExecutor.spellDuration = casterStats.GetCurrentStat(PlayerStats.StatType.SpellDuration);
+            spellListExecutor.castStepDelay = casterStats.GetCurrentStat(StatType.CastStepDelay);
+            spellListExecutor.spellDuration = casterStats.GetCurrentStat(StatType.SpellDuration);
 
             if (spellListExecutor != null)
             {

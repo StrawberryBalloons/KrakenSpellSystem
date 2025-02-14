@@ -63,6 +63,10 @@ public class CharacterActions : MonoBehaviour
     {
         return isGrounded;
     }
+    public Camera GetActiveCamera()
+    {
+        return cameras[camIndex];
+    }
 
     void Start()
     {

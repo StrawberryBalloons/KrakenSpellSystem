@@ -1,12 +1,13 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
 public class DisplayStats : MonoBehaviour
 {
-    public PlayerStats playerStats;
-    public List<TextMeshProUGUI> statTexts;
+    public PlayerStats playerStats; // Reference to the player's stats
+    public GameObject statPrefab; // The UI prefab for each stat
+    public Transform statsContainer; // Parent object to hold the instantiated stat UI elements
+
     private void OnEnable()
     {
         if (playerStats == null)
@@ -15,9 +16,9 @@ public class DisplayStats : MonoBehaviour
             return;
         }
 
-        if (statTexts == null || statTexts.Count < 20)
+        if (statPrefab == null || statsContainer == null)
         {
-            Debug.LogError("Not enough TextMeshProUGUI elements assigned in the inspector!");
+            Debug.LogError("StatPrefab or StatsContainer is not assigned!");
             return;
         }
 
@@ -26,14 +27,27 @@ public class DisplayStats : MonoBehaviour
 
     private void UpdateStats()
     {
-        for (int i = 0; i < 10; i++)
+        // Clear previous UI elements
+        foreach (Transform child in statsContainer)
         {
-            statTexts[i].text = playerStats.baseStats[i].ToString("F2");
+            Destroy(child.gameObject);
         }
 
-        for (int i = 0; i < 10; i++)
+        // Ensure baseStats and modifiedStats are the same length
+        int statCount = Mathf.Min(playerStats.baseStats.Count, playerStats.modifiedStats.Count);
+
+        for (int i = 0; i < statCount; i++)
         {
-            statTexts[i + 10].text = playerStats.modifiedStats[i].ToString("F2");
+            GameObject statInstance = Instantiate(statPrefab, statsContainer);
+
+            // Assign text values
+            TextMeshProUGUI[] textComponents = statInstance.GetComponentsInChildren<TextMeshProUGUI>();
+            if (textComponents.Length >= 3)
+            {
+                textComponents[0].text = ((StatType)i).ToString(); // Assuming Enum order matches list index
+                textComponents[1].text = playerStats.baseStats[i].ToString("F2");
+                textComponents[2].text = playerStats.modifiedStats[i].ToString("F2");
+            }
         }
     }
 }

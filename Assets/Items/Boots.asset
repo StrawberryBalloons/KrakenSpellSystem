@@ -18,28 +18,10 @@ MonoBehaviour:
   itemOwner: {fileID: 0}
   equipmentInfo:
     name: Boots
-    description: 
-    rarity: 2
+    description: An armor forged from the blood and bones of testers.
+    rarity: 5
     equipmentType: 4
-    armourStats:
+    equipmentStats:
     - type: 0
-      value: 100
-    - type: 1
-      value: 10
-    - type: 2
-      value: 100
-    - type: 3
-      value: 10
-    - type: 4
-      value: 100
-    - type: 5
-      value: 10
-    - type: 6
-      value: 20
-    - type: 7
-      value: 0
-    - type: 8
-      value: 0
-    - type: 9
-      value: 5
+      value: 1
   mesh: {fileID: 6236034220689387381, guid: afb0d74223e3830f2a3f7759b350eab6, type: 3}

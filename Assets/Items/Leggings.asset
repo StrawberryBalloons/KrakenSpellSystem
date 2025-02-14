@@ -18,28 +18,10 @@ MonoBehaviour:
   itemOwner: {fileID: 0}
   equipmentInfo:
     name: Leggings
-    description: 
-    rarity: 5
+    description: An armor forged from the blood and bones of testers.
+    rarity: 4
     equipmentType: 3
-    armourStats:
-    - type: 0
-      value: 100
+    equipmentStats:
     - type: 1
       value: 10
-    - type: 2
-      value: 100
-    - type: 3
-      value: 10
-    - type: 4
-      value: 100
-    - type: 5
-      value: 10
-    - type: 6
-      value: 20
-    - type: 7
-      value: 0
-    - type: 8
-      value: 0
-    - type: 9
-      value: 5
   mesh: {fileID: 1499204700893171039, guid: a13f845f763d5bb1fa2aff2ba153b794, type: 3}

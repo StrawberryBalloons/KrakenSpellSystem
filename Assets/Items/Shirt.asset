@@ -18,28 +18,10 @@ MonoBehaviour:
   itemOwner: {fileID: 0}
   equipmentInfo:
     name: Shirt
-    description: 
-    rarity: 0
+    description: An armor forged from the blood and bones of testers.
+    rarity: 4
     equipmentType: 1
-    armourStats:
-    - type: 0
-      value: 100
-    - type: 1
-      value: 10
-    - type: 2
-      value: 100
-    - type: 3
-      value: 10
-    - type: 4
-      value: 100
+    equipmentStats:
     - type: 5
-      value: 10
-    - type: 6
-      value: 20
-    - type: 7
-      value: 0
-    - type: 8
-      value: 0
-    - type: 9
-      value: 5
+      value: 1
   mesh: {fileID: 2867369767688551428, guid: 8dfb23d9ab5ae6e38a580df730a524be, type: 3}

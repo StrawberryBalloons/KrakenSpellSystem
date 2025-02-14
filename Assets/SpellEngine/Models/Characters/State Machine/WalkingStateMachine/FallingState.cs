@@ -11,6 +11,9 @@ public class FallingState : WalkingState
     Transform rightTransform;
     Transform rightHomeTransform;
 
+    float _targetWeight = 0f;
+    float _elapsedTime = 0f;
+    float _lerpDuration = 1f;
 
     public FallingState(WalkingContext context, WalkingStateMachine.EWalkingStateMachine estate)
       : base(context, estate) { }
@@ -39,32 +42,13 @@ public class FallingState : WalkingState
 
     public override void UpdateState()
     {
-        // Lerp the position of __leftStepper and _rightStepper IK targets to their home positions
-        if (Context._leftStepper != null && Context._rightStepper != null)
-        {
-            // Interpolation speed
-            float lerpSpeed = 5f * Time.deltaTime;
+        _elapsedTime += Time.deltaTime;
 
-            // Lerp left stepper
-            if (leftTransform != null && leftHomeTransform != null)
-            {
-                leftTransform.position = Vector3.Lerp(
-                    leftTransform.position,
-                    leftHomeTransform.position + (leftHomeTransform.up / 2),
-                    lerpSpeed
-                );
-            }
+        Context.LeftIKConstraint.weight = Mathf.Lerp(Context.LeftIKConstraint.weight, _targetWeight, _elapsedTime / _lerpDuration);
+        Context.RightIKConstraint.weight = Mathf.Lerp(Context.RightIKConstraint.weight, _targetWeight, _elapsedTime / _lerpDuration);
 
-            // Lerp right stepper
-            if (rightTransform != null && rightHomeTransform != null)
-            {
-                rightTransform.position = Vector3.Lerp(
-                    rightTransform.position,
-                    rightHomeTransform.position + (rightHomeTransform.up / 2),
-                    lerpSpeed
-                );
-            }
-        }
+        Context.leftMultiRotationConstraint.weight = Mathf.Lerp(Context.leftMultiRotationConstraint.weight, _targetWeight, _elapsedTime / _lerpDuration);
+        Context.rightMultiRotationConstraint.weight = Mathf.Lerp(Context.rightMultiRotationConstraint.weight, _targetWeight, _elapsedTime / _lerpDuration);
     }
 
     public override WalkingStateMachine.EWalkingStateMachine GetNextState()
