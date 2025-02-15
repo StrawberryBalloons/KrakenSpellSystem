@@ -15,3 +15,6 @@ MonoBehaviour:
   name: Helm of Debug
   icon: {fileID: 21300000, guid: 1c310b5759a5fe6d2927edbd81a9042c, type: 3}
   isDefault: 0
+  itemOwner: {fileID: 0}
+  spritePrefab: {fileID: 1005904234808934551, guid: 8b73afa8e2865e8589630fb6069fa2c2,
+    type: 3}

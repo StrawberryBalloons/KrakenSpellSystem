@@ -51,7 +51,16 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _CellDensity: 1
+    - _NoiseScale: 200
+    - _NoiseSubtract: 0.05
     - _QueueControl: 0
     - _QueueOffset: 0
-    m_Colors: []
+    - _SecondaryDensity: 2
+    - _SecondaryScale: 100
+    - _SecondarySubtract: 0.15
+    - _Speed: 1
+    m_Colors:
+    - _PrimaryMana: {r: 1, g: 0, b: 0.5828066, a: 0.1882353}
+    - _SecondaryMana: {r: 1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

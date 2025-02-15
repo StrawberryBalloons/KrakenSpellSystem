@@ -83,13 +83,28 @@ public class DraggableInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHan
 
         // Perform raycast to check if dropped on an inventory slot
         InventorySlot hoveredSlot = GetInventorySlotUnderPointer(eventData);
-        if (hoveredSlot != null)
+        if (hoveredSlot != null && hoveredSlot.item == null)
         {
             Debug.Log($"Dropped on inventory slot: {hoveredSlot.name}");
             hoveredSlot.AddItem(invenSlot.item);
             invenSlot.ClearSlot();
             // Inventory.instance.Remove(item);
             // Add your logic here for handling dropping on a slot
+        }
+        else if (hoveredSlot != null && hoveredSlot.item != null)
+        {
+            Debug.Log($"Swapping with inventory slot: {hoveredSlot.name}");
+            //Store the item to swap
+            Item swapItem = hoveredSlot.item;
+
+            //clear the slot
+            hoveredSlot.ClearSlot();
+            //put item into cleared slot
+            hoveredSlot.AddItem(invenSlot.item);
+            //clear the slot we just moved an item from
+            invenSlot.ClearSlot();
+            //Put the held item into the now empty slot
+            invenSlot.AddItem(swapItem);
         }
         else
         {

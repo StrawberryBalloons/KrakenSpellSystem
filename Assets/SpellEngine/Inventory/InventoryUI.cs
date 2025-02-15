@@ -119,6 +119,11 @@ public class InventoryUI : MonoBehaviour
             Debug.Log("The item in the current slot is a weapon. Running Sheathe().");
             currentWeapon.Sheathe();
         }
+        else if (currentSlot.item is Item currentItem)// Hide non-weapon item sprite
+        {
+            Debug.Log("The item in the current slot is a weapon. Running Sheathe().");
+            currentItem.HideHeldItem();
+        }
 
         // Update the current slot
         currentSlot = toolParent.GetChild(currentSlotIndex).GetComponent<InventorySlot>();
@@ -130,6 +135,13 @@ public class InventoryUI : MonoBehaviour
             Debug.Log("The item in the current slot is a weapon. Running Wield().");
             newWeapon.Wield();
         }
+        else if (currentSlot.item is Item currentItem)//show non-weapon icon sprite
+        {
+            Debug.Log("The item in the current slot is a weapon. Running Wield().");
+            currentItem.ShowInHand();
+        }
+
+
 
         activateSlot();
     }
