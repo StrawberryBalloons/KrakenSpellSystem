@@ -14,7 +14,15 @@ public class InitiatingState : MeleeState
     public override void EnterState()
     {
         Debug.Log("Entering Initiating State");
-        _elapsedTime = 0.0f;
+
+        //Change the speed multiplier to 1 to get it moving again
+        Context._animator.SetFloat("AttackAnimationSpeed", 1);
+
+        // Procedural weight set to 0
+        Context.leftIKConstraint.weight = 0;
+        Context.leftMultiRotationConstraint.weight = 0;
+        Context.rightIKConstraint.weight = 0;
+        Context.rightMultiRotationConstraint.weight = 0;
     }
 
     public override void ExitState()
@@ -27,15 +35,6 @@ public class InitiatingState : MeleeState
         //lerp IkTarget to strike endpoint
         //Move Ik Targets to Ready Position
         _elapsedTime += Time.deltaTime;
-        Vector3 leftLocal = Context.leftIKConstraint.data.target.localPosition;
-        Vector3 rightLocal = Context.rightIKConstraint.data.target.localPosition;
-
-        // float t = Mathf.Clamp01(_elapsedTime / _lerpDuration); // Normalize the elapsed time
-        Context.rightIKConstraint.data.target.localPosition = Vector3.Lerp(rightLocal, Context._swingEnd, _elapsedTime / _lerpDuration);
-        if (Context._twoHand)
-        {
-            Context.leftIKConstraint.data.target.localPosition = Vector3.Lerp(leftLocal, Context._swingEnd, _elapsedTime / _lerpDuration);
-        }
 
     }
 

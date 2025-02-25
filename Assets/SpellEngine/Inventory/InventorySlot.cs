@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
+using TMPro;
+
 public class InventorySlot : MonoBehaviour
 {
     public Item item;
@@ -11,6 +13,8 @@ public class InventorySlot : MonoBehaviour
     private Vector2 offset;
     [HideInInspector]
     public Transform parentAfterDrag;
+    public TMP_Text itemCount;
+
 
     public void AddItem(Item newItem)
     {
@@ -19,11 +23,24 @@ public class InventorySlot : MonoBehaviour
         icon.sprite = item.icon;
         icon.enabled = true;
         remove.interactable = true;
+        UpdateCount(Inventory.instance.GetItemCount(item));
+        //Add a count for how many of this item is in the inventory
+    }
+    private void UpdateCount(int count)
+    {
+        if (count < 2)
+        {
+            itemCount.text = "";
+        }
+        else
+        {
+            itemCount.text = count.ToString();
+        }
     }
 
     public void ClearSlot()
     {
-
+        UpdateCount(0);
         item = null;
         icon.sprite = null;
         icon.enabled = false;
@@ -34,6 +51,7 @@ public class InventorySlot : MonoBehaviour
     public void OnRemoveButton()
     {
         Inventory.instance.Remove(item);
+        UpdateCount(Inventory.instance.GetItemCount(item));
     }
 
     public void UseItem()

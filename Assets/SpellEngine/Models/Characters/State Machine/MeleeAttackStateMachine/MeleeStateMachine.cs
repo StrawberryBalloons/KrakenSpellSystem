@@ -54,6 +54,7 @@ public class MeleeStateMachine : StateManager<MeleeStateMachine.EMeleeStateMachi
     [SerializeField] private Rigidbody _rigidBody;
     [SerializeField] private CapsuleCollider _rootCollider;
     [SerializeField] private LayerMask _layerMask; // Assign specific layers in the Inspector
+    [SerializeField] private Animator animator; // Assign specific layers in the Inspector
 
 
     void Awake()
@@ -74,7 +75,8 @@ public class MeleeStateMachine : StateManager<MeleeStateMachine.EMeleeStateMachi
     swingStart,
     swingEnd,
     lockOn,
-    twoHand
+    twoHand,
+    animator
 );
 
         // ConstructEnvironmentDetectionCollider();
@@ -88,7 +90,7 @@ public class MeleeStateMachine : StateManager<MeleeStateMachine.EMeleeStateMachi
         States.Add(EMeleeStateMachine.INITIATING, new InitiatingState(_context, EMeleeStateMachine.INITIATING));    //Initiate Attack 
         States.Add(EMeleeStateMachine.IMPACT, new ImpactState(_context, EMeleeStateMachine.IMPACT));                //When you hit something
         States.Add(EMeleeStateMachine.INTERRUPT, new InterruptState(_context, EMeleeStateMachine.INTERRUPT));       //When something hits you
-        States.Add(EMeleeStateMachine.NEUTRAL, new NeutralState(_context, EMeleeStateMachine.NEUTRAL));       //When something hits you
+        States.Add(EMeleeStateMachine.NEUTRAL, new NeutralState(_context, EMeleeStateMachine.NEUTRAL));             //When something hits you
 
         CurrentState = States[EMeleeStateMachine.NEUTRAL];
     }

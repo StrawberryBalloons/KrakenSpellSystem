@@ -1875,6 +1875,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   text: {fileID: 3464998460421581140}
   background: {fileID: 1663122975025431757}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &186591743128883302
@@ -1930,6 +1931,7 @@ MonoBehaviour:
   parentObject: {fileID: 4456263229094107544}
   text: {fileID: 1580177783625568766}
   background: {fileID: 4385712003873463613}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &187697605165684879
@@ -3596,6 +3598,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   text: {fileID: 6873731567827279744}
   background: {fileID: 1126529961633097547}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &380358316126950108
@@ -5061,6 +5064,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   text: {fileID: 1574603482702778742}
   background: {fileID: 8763388301227178280}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &523747150662306778
@@ -5249,6 +5253,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   text: {fileID: 2040393838465302174}
   background: {fileID: 6803837756015445638}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &532693768018690816
@@ -7690,6 +7695,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   text: {fileID: 2142579112836710791}
   background: {fileID: 6989196265560509357}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &768253609049234169
@@ -7995,6 +8001,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   text: {fileID: 2438186056615101655}
   background: {fileID: 7606868077364610767}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &776924346662775344
@@ -11460,6 +11467,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   text: {fileID: 7658613843872425460}
   background: {fileID: 3637076698092582683}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &1289310269065561217
@@ -12711,6 +12719,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   text: {fileID: 1825080689340667280}
   background: {fileID: 7473344143318752351}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &1518521758708749937
@@ -15725,6 +15734,7 @@ MonoBehaviour:
   parentObject: {fileID: 1901414907877674876}
   text: {fileID: 2567774575528562839}
   background: {fileID: 2943769661273089525}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &1824707633075168791
@@ -17502,6 +17512,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   text: {fileID: 5241082324023030499}
   background: {fileID: 2415558539678751352}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &1972093485140077774
@@ -17605,6 +17616,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   text: {fileID: 2204602308298040306}
   background: {fileID: 3925735339638783890}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &1978835830983865037
@@ -18536,6 +18548,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   text: {fileID: 124312038091946804}
   background: {fileID: 965781351645130177}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &2069352165158150790
@@ -18591,6 +18604,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   text: {fileID: 3986623939691169929}
   background: {fileID: 4337573598325615288}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &2070123482764695736
@@ -19473,6 +19487,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   text: {fileID: 7192031267983923161}
   background: {fileID: 6144603082055316988}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &2126792151788799330
@@ -20309,6 +20324,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   text: {fileID: 5903207558228755314}
   background: {fileID: 3520739221023119972}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &2190408908041548519
@@ -20831,6 +20847,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   text: {fileID: 7979348400188952246}
   background: {fileID: 5848252796939329393}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &2235418176131409577
@@ -21434,6 +21451,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   text: {fileID: 5119204118802192148}
   background: {fileID: 4024763584794232249}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &2302623698340773676
@@ -23516,6 +23534,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   text: {fileID: 3243644556224797699}
   background: {fileID: 6840982490147725951}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &2475016199255424327
@@ -25544,6 +25563,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   text: {fileID: 3841530633671726582}
   background: {fileID: 304583745330569609}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &2650922789361693638
@@ -25599,6 +25619,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   text: {fileID: 3395940324260946145}
   background: {fileID: 2809885420807029819}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &2650963735754693899
@@ -25822,6 +25843,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   text: {fileID: 7802414654415239634}
   background: {fileID: 163930059618936552}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &2698167494184340845
@@ -27424,6 +27446,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   text: {fileID: 423508821857418368}
   background: {fileID: 3038153072694181047}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &2837679909360297270
@@ -28067,6 +28090,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   text: {fileID: 57856390821021294}
   background: {fileID: 5960977762496355824}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &2906932824680457508
@@ -29339,6 +29363,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   text: {fileID: 9170681352756049524}
   background: {fileID: 2235418176131409577}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &2996869217357090650
@@ -29580,6 +29605,7 @@ MonoBehaviour:
   parentObject: {fileID: 2945578611412957312}
   text: {fileID: 272714768191805927}
   background: {fileID: 4615542476523250732}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &3010477575433174041
@@ -32062,6 +32088,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   text: {fileID: 6055712765485286972}
   background: {fileID: 7013975163411194095}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &3219513799477525371
@@ -35291,6 +35318,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   text: {fileID: 36189857091378743}
   background: {fileID: 2445453520324517363}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &3520739221023119972
@@ -35630,6 +35658,7 @@ MonoBehaviour:
   parentObject: {fileID: 8688495320435007117}
   text: {fileID: 9195210526975867366}
   background: {fileID: 1777170194739672244}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &3574482098881812238
@@ -38218,6 +38247,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   text: {fileID: 6112616458079168982}
   background: {fileID: 2778797081051874961}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &3841530633671726582
@@ -40807,6 +40837,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   text: {fileID: 1992846518530598145}
   background: {fileID: 5676695888130335715}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &4151894561752554408
@@ -41934,6 +41965,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   text: {fileID: 3034435503602005080}
   background: {fileID: 8975815957640110279}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &4267852586602408039
@@ -44463,6 +44495,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   text: {fileID: 5852936799848952430}
   background: {fileID: 768253609049234169}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &4428372581128061622
@@ -49066,6 +49099,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   text: {fileID: 513111833693856628}
   background: {fileID: 3529214918928153007}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &4946173820655292376
@@ -50782,6 +50816,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   text: {fileID: 6482644653926080437}
   background: {fileID: 2267599490112824624}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &5128852416733475640
@@ -52604,6 +52639,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   text: {fileID: 795613342804438180}
   background: {fileID: 6803503686160785308}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &5361328249416624255
@@ -52804,6 +52840,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   text: {fileID: 8421034996891886165}
   background: {fileID: 5315265740495510852}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &5411633781695870215
@@ -59464,6 +59501,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   text: {fileID: 7349169298771597271}
   background: {fileID: 5942893568118100277}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &6319488391951837346
@@ -60712,6 +60750,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   text: {fileID: 9205417220638042911}
   background: {fileID: 7944130517084897788}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &6436677303804172747
@@ -66172,6 +66211,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   text: {fileID: 5528895778280642449}
   background: {fileID: 6581000448461253249}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &6989196265560509357
@@ -66377,6 +66417,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   text: {fileID: 4272640715379806272}
   background: {fileID: 7571563515600052156}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &7031955017777253632
@@ -69434,6 +69475,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   text: {fileID: 9016164145269929819}
   background: {fileID: 7737563947007255500}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &7371845463508468266
@@ -80665,6 +80707,7 @@ MonoBehaviour:
   parentObject: {fileID: 4628635412377709601}
   text: {fileID: 2816527678238564801}
   background: {fileID: 2385191479276832130}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &8337823513693622248
@@ -84056,6 +84099,7 @@ MonoBehaviour:
   parentObject: {fileID: 3506702925785286450}
   text: {fileID: 6846601781995018782}
   background: {fileID: 6223377242200617903}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &8625311873985269575
@@ -84824,6 +84868,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   text: {fileID: 4890663436079015108}
   background: {fileID: 3451281894435621679}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &8710348608443977152
@@ -85920,6 +85965,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   text: {fileID: 3031520331085045111}
   background: {fileID: 1315832821277649792}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &8802841653113166150
@@ -86646,6 +86692,7 @@ GameObject:
   - component: {fileID: 7438686939271599160}
   - component: {fileID: 3904793901948074452}
   - component: {fileID: 4181938749843642292}
+  - component: {fileID: 8372321691925342094}
   m_Layer: 31
   m_Name: Player
   m_TagString: Untagged
@@ -86840,6 +86887,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 2147483680
+  playerCombat: {fileID: 0}
   slider: {fileID: 7229203995483574295}
   playerCameraCentre: {fileID: 6858306996753147094}
   rotationSpeed: 3
@@ -86937,6 +86985,21 @@ MonoBehaviour:
   charActions: {fileID: 3896022631004379814}
   maxRayDistance: 20
   textPaddingSize: 10
+--- !u!114 &8372321691925342094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8868776079750294015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 361c07ee87b4edd97bae87f8db27489c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  equippedWeapon: {fileID: 0}
+  userSelectedStance: {fileID: 0}
 --- !u!1 &8870626795996121659
 GameObject:
   m_ObjectHideFlags: 0
@@ -87853,6 +87916,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   text: {fileID: 2086467689546202023}
   background: {fileID: 9866746912530519}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &8971609186272596457
@@ -89149,6 +89213,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   text: {fileID: 4116285781109758676}
   background: {fileID: 2596440631213589338}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &9031850360505255768
@@ -89493,6 +89558,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   text: {fileID: 1254122334837534348}
   background: {fileID: 748524038144766688}
+  rarity: {fileID: 0}
   textPaddingSize: 10
   forceHide: 0
 --- !u!1 &9065779080352524241

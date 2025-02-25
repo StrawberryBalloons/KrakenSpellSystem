@@ -48,7 +48,7 @@ public abstract class StateManager<EState> : MonoBehaviour where EState : Enum
     }
     void OnTriggerExit(Collider other)
     {
-        CurrentState.OnTriggerEnter(other);
+        CurrentState.OnTriggerExit(other);
     }
     void OnCollisionEnter() { }
     void OnCollisionStay() { }

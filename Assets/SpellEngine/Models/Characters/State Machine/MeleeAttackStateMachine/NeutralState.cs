@@ -42,7 +42,7 @@ public class NeutralState : MeleeState
     public override MeleeStateMachine.EMeleeStateMachine GetNextState()
     {
         //Move to STANCE if in combat or Melee Move selected
-        if (Context._lockOn)
+        if (Context._lockOn || Context._animator.GetInteger("StanceType") != -1)
         {
             return MeleeStateMachine.EMeleeStateMachine.STANCE;
         }

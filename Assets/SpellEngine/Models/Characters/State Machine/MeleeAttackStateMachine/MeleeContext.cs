@@ -28,7 +28,8 @@ public class MeleeContext : MonoBehaviour
         Vector3 swingStart,
         Vector3 swingEnd,
         bool lockOn,
-        bool twoHand)
+        bool twoHand,
+        Animator animator)
     {
         _leftIKConstraint = leftIKConstraint;
         _rightIKConstraint = rightIKConstraint;
@@ -44,6 +45,7 @@ public class MeleeContext : MonoBehaviour
         _swingEnd = swingEnd;
         _lockOn = lockOn;
         _twoHand = twoHand;
+        _animator = animator;
     }
     // public MeleeContext(TwoBoneIKConstraint leftIKConstraint, TwoBoneIKConstraint rightIKConstraint, MultiRotationConstraint leftMultiRotationConstraint, MultiRotationConstraint rightMultiRotationConstraint, Rigidbody rigidbody, CapsuleCollider rootCollider
     //     , Transform rootTransform, LayerMask layer, CharacterActions characterActions, Inventory inventory, Vector3 swingStart, Vector3 swingEnd, bool lockOn)
@@ -69,7 +71,7 @@ public class MeleeContext : MonoBehaviour
     //     // SetCurrentSide(Vector3.positiveInfinity);
     // }
 
-
+    public Animator _animator;
     public bool _twoHand;
     public bool _lockOn; //change to taken damage or dealt damage recently, work in character actions
     public Vector3 _swingStart;

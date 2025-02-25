@@ -9,6 +9,7 @@ public class CharacterActions : MonoBehaviour
     // PLAYER
     private Rigidbody rb;
     public LayerMask playerLayer;
+    public PlayerCombat playerCombat;
 
     // CAMERA
     public Slider slider;

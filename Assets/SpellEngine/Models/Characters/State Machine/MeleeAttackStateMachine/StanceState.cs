@@ -18,12 +18,8 @@ public class StanceState : MeleeState
     {
         Debug.Log("Entering Stance State");
         //Set Ik position to where the stance requests it, get stance from weapon?
-        stancePlaceholder = new Vector3(0.13f, 1.031f, 0.411f);
 
-        if (Context._twoHand)
-        {
-            Context.leftIKConstraint.data.target.localPosition = new Vector3(0.902f, 0.409f, -0.081f);
-        }
+        //Stance plays when there is no attack direction and the weapon has been drawn
 
         _elapsedTime = 0.0f;
 
@@ -37,44 +33,30 @@ public class StanceState : MeleeState
     public override void UpdateState()
     {
         _elapsedTime += Time.deltaTime;
-        //Ik weights to 1
-        if (_elapsedTime < 3f)
-        {
-            //Move Ik Targets to Ready Position
-            Context.leftIKConstraint.weight = Mathf.Lerp(Context.leftIKConstraint.weight, targetWeight, _elapsedTime / _lerpDuration);
-            Context.leftMultiRotationConstraint.weight = Mathf.Lerp(Context.leftMultiRotationConstraint.weight, targetWeight, _elapsedTime / _lerpDuration);
-
-            Context.rightIKConstraint.weight = Mathf.Lerp(Context.rightIKConstraint.weight, targetWeight, _elapsedTime / _lerpDuration);
-            Context.rightMultiRotationConstraint.weight = Mathf.Lerp(Context.rightMultiRotationConstraint.weight, targetWeight, _elapsedTime / _lerpDuration);
-        }
-
-        Context.rightIKConstraint.data.target.localPosition = Vector3.Lerp(Context.rightIKConstraint.transform.localPosition, stancePlaceholder, _elapsedTime / _lerpDuration);
-        if (Context._twoHand)
-        {
-            Context.leftIKConstraint.data.target.localPosition = Vector3.Lerp(Context.leftIKConstraint.transform.localPosition, stancePlaceholder, _elapsedTime / _lerpDuration);
-        }
     }
 
     public override MeleeStateMachine.EMeleeStateMachine GetNextState()
     {
         //Wait for melee input to go to ASSUMING
-        if (Input.GetMouseButtonDown(1)) //replace with interact/use key
+        // if (Input.GetMouseButtonDown(1)) //replace with interact/use key
+        if (Context._animator.GetInteger("attackDirection") > -1)
         {
-            Context.leftIKConstraint.weight = targetWeight;
-            Context.leftMultiRotationConstraint.weight = targetWeight;
-            Context.rightIKConstraint.weight = targetWeight;
-            Context.rightMultiRotationConstraint.weight = targetWeight;
+            // Context.leftIKConstraint.weight = targetWeight;
+            // Context.leftMultiRotationConstraint.weight = targetWeight;
+            // Context.rightIKConstraint.weight = targetWeight;
+            // Context.rightMultiRotationConstraint.weight = targetWeight;
 
             return MeleeStateMachine.EMeleeStateMachine.ASSUMING;
         }
 
-        //Go to NEUTRAL stance if target not locked or no weapon drawn
-        if (_elapsedTime >= 60f)
+        //Go to NEUTRAL state if target not locked or no weapon drawn (need to implement target lock at a later date)
+        if (!Context._lockOn || Context._animator.GetInteger("StanceType") == -1)
         {
             return MeleeStateMachine.EMeleeStateMachine.NEUTRAL;
         }
 
         //Go to INTERRUPT state if hit
+
 
         //Stay in current state
         return StateKey;

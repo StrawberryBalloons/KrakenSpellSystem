@@ -7,16 +7,25 @@ public class Weapons : Item
 {
     public GameObject weaponPrefab;
     public EquipmentPiece equipmentInfo;
-    PlayerStats player = null;
-    Inventory inven = null;
+    public WeaponType weaponType; // Reference to weapon type
+    public WeaponType.WeaponStanceEnum customStance; // Optional custom stance
+
+    public WeaponType.WeaponTypeEnum customType; // Optional custom stance
+    // public AnimationClip[] customAttacks = new AnimationClip[8]; // Optional custom attack animations
+
+    PlayerStats playerStats = null;
+    PlayerCombat playerCombat = null;
+    Inventory playerInven = null;
     GameObject weaponInstance = null;
     public bool equipped = false;
 
     public override void Use()
     {
-        if (player == null)
+        if (playerStats == null)
         {
-            player = this.itemOwner.GetComponent<PlayerStats>();
+            playerStats = this.itemOwner.GetComponent<PlayerStats>();
+            playerCombat = this.itemOwner.GetComponent<PlayerCombat>();
+            playerInven = this.itemOwner.GetComponent<Inventory>();
         }
 
         if (equipped)
@@ -42,30 +51,21 @@ public class Weapons : Item
 
     public void Wield()
     {
-        inven = this.itemOwner.GetComponent<Inventory>();
-        if (weaponPrefab == null)
-        {
-            Debug.LogError("Weapon prefab is not assigned.");
-            return;
-        }
+        playerStats = this.itemOwner.GetComponent<PlayerStats>();
+        playerCombat = this.itemOwner.GetComponent<PlayerCombat>();
+        playerInven = this.itemOwner.GetComponent<Inventory>();
 
-        if (inven == null)
+        if (weaponPrefab == null || playerInven == null || playerInven.rightHand == null)
         {
-            Debug.LogError("Inventory reference (inven) is null.");
-            return;
-        }
-
-        if (inven.rightHand == null)
-        {
-            Debug.LogError("Right hand transform is not assigned in Inventory.");
+            Debug.LogError("Weapon data missing.");
             return;
         }
 
         // Instantiate the weapon without affecting its original rotation or scale
-        weaponInstance = Instantiate(weaponPrefab, inven.rightHand.position, inven.rightHand.rotation, inven.rightHand);
+        weaponInstance = Instantiate(weaponPrefab, playerInven.rightHand.position, playerInven.rightHand.rotation, playerInven.rightHand);
 
         // Adjust rotation: Set X-axis to 90 degrees while keeping the rightHand's rotation
-        Quaternion newRotation = inven.rightHand.rotation * Quaternion.Euler(90f, 0f, 0f);
+        Quaternion newRotation = playerInven.rightHand.rotation * Quaternion.Euler(90f, 0f, 0f);
         weaponInstance.transform.rotation = newRotation;
 
         // Scale the weapon to 1/100th of its original size
@@ -74,9 +74,11 @@ public class Weapons : Item
         //Add the wielded values to players stats
         foreach (var stat in equipmentInfo.equipmentStats)
         {
-            player.ModifyStats(stat.type, stat.value);
+            playerStats.ModifyStats(stat.type, stat.value);
         }
         equipped = true;
+        playerStats.GetComponent<PlayerCombat>().EquipWeapon(this);
+
     }
 
     public void Sheathe()
@@ -84,12 +86,34 @@ public class Weapons : Item
         //Remove the wielded values from player stats
         foreach (var stat in equipmentInfo.equipmentStats)
         {
-            player.ModifyStats(stat.type, -stat.value);
+            playerStats.ModifyStats(stat.type, -stat.value);
         }
 
         //Delete weapon game object
         Destroy(weaponInstance);
         equipped = false;
+        playerStats.GetComponent<PlayerCombat>().UnEquipWeapon();
+    }
+    public int GetStance()
+    {
+        if (customStance == null)
+        {
+            return (int)weaponType.weaponStance;
+        }
+        return (int)customStance;
+    }
+    public int GetType()
+    {
+        if (customType == null)
+        {
+            return (int)weaponType.weaponType;
+        }
+        return (int)customType;
     }
 
+    // public int GetAttackAnimation(int directionIndex)
+    // {
+    //     // return weaponType.defaultAttacks[directionIndex];
+    //     return customAttacks[directionIndex] != null ? customAttacks[directionIndex] : weaponType.defaultAttacks[directionIndex];
+    // }
 }

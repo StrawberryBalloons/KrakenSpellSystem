@@ -156,7 +156,7 @@ public class InventoryUI : MonoBehaviour
             slots[i].ClearSlot();
             if (i < inventory.items.Count)
             {
-                slots[i].AddItem(inventory.items[i]);
+                slots[i].AddItem(inventory.items[i].item);
             }
         }
     }
